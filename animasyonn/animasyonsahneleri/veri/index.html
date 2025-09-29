@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VERİ — Ham'dan Anlama</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="header-info">
+            <h1 class="header-title">VERİ — Ham'dan Anlama</h1>
+            <p class="header-subtitle">İnteraktif Veri Eğitimi</p>
+          </div>
+          <div class="header-controls">
+            <button class="btn btn-outline" id="resetBtn">
+              <i data-lucide="rotate-ccw"></i>
+              Baştan
+            </button>
+            <button class="btn btn-primary" id="playPauseBtn">
+              <i data-lucide="play" id="playIcon"></i>
+              <i data-lucide="pause" id="pauseIcon" style="display: none"></i>
+              <span id="playText">Oynat</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-section">
+      <div class="container">
+        <div class="progress-info">
+          <span>Genel İlerleme</span>
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="container">
+        <div class="scene-header">
+          <h2 class="scene-title" id="sceneTitle">Veri Nedir?</h2>
+          <p class="scene-subtitle" id="sceneSubtitle">
+            Olayların kaydedilebilir temsili
+          </p>
+        </div>
+
+        <div class="scene-content" id="sceneContent"></div>
+
+        <div class="scene-description">
+          <p id="sceneDescription">
+            Veri; sayı, metin, görüntü ve sinyallerin bir olayı temsil eden
+            kayıtlarıdır.
+          </p>
+        </div>
+
+        <div class="scene-navigation">
+          <div class="scene-buttons" id="sceneButtons"></div>
+        </div>
+
+        <div class="final-actions" id="finalActions" style="display: none">
+          <button class="btn btn-outline" id="replayBtn">Tekrar İzle</button>
+          <button class="btn btn-primary">Sonraki Modül: Veri Kaydı</button>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "veri", 100);
+            window.location.href = "../../../testler/hash/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "veri";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "veri",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "veri" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  </body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veritabanı Sistemlerini Öğrenin</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Veritabanı Sistemlerini Öğrenin</h1>
+      </header>
+
+      <div class="progress-section">
+        <div class="progress-info">
+          <span class="scene-counter"
+            >Sahne <span id="current-scene">1</span> / 3</span
+          >
+          <span class="completion-rate"
+            >%<span id="completion-percentage">33</span> Tamamlandı</span
+          >
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="steps-navigation">
+        <div class="step active" data-step="0">
+          <div class="step-number">1</div>
+          <div class="step-label">Kaotik Veri</div>
+        </div>
+        <div class="step" data-step="1">
+          <div class="step-number">2</div>
+          <div class="step-label">Organizasyon</div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-number">3</div>
+          <div class="step-label">Sorgulama</div>
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="main-content">
+          <div class="content-header">
+            <h2>Veritabanı = Organize Veri Deposu</h2>
+            <p>
+              Verilerinizi sistematik olarak saklayın, organize edin ve hızlıca
+              erişin.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <div class="info-icon">💡</div>
+            <div class="info-content">
+              <strong>Veritabanı Nedir?</strong> Veritabanı, verilerin organize
+              edilmiş, yapılandırılmış ve sistematik olarak saklandığı dijital
+              bir depolama sistemidir. Bu sistem sayesinde büyük miktardaki
+              bilgiyi etkili bir şekilde yönetebilir, arayabilir ve
+              güncelleyebiliriz.
+            </div>
+          </div>
+
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-color blue"></div>
+              <span>Yapılandırılmış Veri</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color green"></div>
+              <span>Hızlı Erişim</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color purple"></div>
+              <span>Güvenli Saklama</span>
+            </div>
+          </div>
+
+          <div class="learning-objective">
+            <div class="objective-icon">🎯</div>
+            <div class="objective-content">
+              <strong>Öğrenme Hedefi:</strong> "Veritabanı sistemlerinin temel
+              çalışma prensiplerini anlama"
+              <p>
+                Bu animasyon ile verilerin nasıl organize edildiği, saklandığı
+                ve sorgulandığı öğreneceksiniz.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scene-container">
+          <div class="scene active" id="scene-0">
+            <div class="scene-header">
+              <h3>Sahne 1: Kaotik Veri Dünyası</h3>
+              <p>
+                Organize edilmemiş veriler karmaşık bir hal alır. İhtiyacınız
+                olan bilgiyi bulmak zordur. Bu durumda veri yönetimi neredeyse
+                imkansız hale gelir.
+              </p>
+            </div>
+
+            <div class="animation-area">
+              <div class="chaotic-data" id="chaotic-data"></div>
+            </div>
+
+            <div class="warning-message">
+              <span class="warning-icon">⚠️</span>
+              <span>Düzensiz veri = Zaman kaybı</span>
+            </div>
+          </div>
+
+          <div class="scene" id="scene-1">
+            <div class="scene-header">
+              <h3>Sahne 2: Veri Organizasyonu</h3>
+              <p>
+                Veriler türlerine göre organize edilir. Her veri türü kendi
+                çekmecesine yerleşir. Bu sayede düzen sağlanır ve erişim
+                kolaylaşır.
+              </p>
+            </div>
+
+            <div class="database-drawers" id="database-drawers">
+              <div class="drawer">
+                <div class="drawer-header">📝 İsimler</div>
+                <div class="drawer-content" id="text-drawer"></div>
+              </div>
+              <div class="drawer">
+                <div class="drawer-header">💰 Fiyatlar</div>
+                <div class="drawer-content" id="number-drawer"></div>
+              </div>
+              <div class="drawer">
+                <div class="drawer-header">📅 Tarihler</div>
+                <div class="drawer-content" id="date-drawer"></div>
+              </div>
+              <div class="drawer">
+                <div class="drawer-header">🏷️ Kategoriler</div>
+                <div class="drawer-content" id="category-drawer"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scene" id="scene-2">
+            <div class="scene-header">
+              <h3>Sahne 3: Veri Sorgulama</h3>
+              <p>
+                Organize edilmiş verilerden istediğiniz bilgiyi hızlıca
+                bulabilirsiniz. SQL sorguları ile karmaşık aramalar yapabilir ve
+                sonuçları anında görüntüleyebilirsiniz.
+              </p>
+            </div>
+
+            <div class="query-section">
+              <div class="query-controls">
+                <label for="user-query">🔍 Hangi bilgiyi arıyorsunuz?</label>
+                <div class="query-input-group">
+                  <select id="user-query">
+                    <option value="">Seçiniz...</option>
+                    <option value="ayse">👤 Ayşe'nin Siparişleri</option>
+                    <option value="mehmet">👤 Mehmet'in Siparişleri</option>
+                    <option value="ayakkabi">👠 Ayakkabı Siparişleri</option>
+                    <option value="all">📊 Tüm Siparişler</option>
+                  </select>
+                  <button id="query-btn">Sorgula</button>
+                </div>
+              </div>
+
+              <div class="loading" id="loading" style="display: none">
+                <div class="spinner"></div>
+                <p>Veriler toplanıyor...</p>
+              </div>
+
+              <div class="result-table" id="result-table" style="display: none">
+                <h4>📋 Sipariş Özeti</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>👤 Müşteri</th>
+                      <th>🛍️ Ürün</th>
+                      <th>💰 Fiyat</th>
+                      <th>📅 Tarih</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="animation-controls">
+          <div class="animation-info">
+            <div class="duration-info">
+              <span class="clock-icon">⏱️</span>
+              <span>Animasyon Süresi: 15 saniye</span>
+            </div>
+            <p>
+              Veritabanı sistemlerinin çalışma prensiplerini adım adım izleyin
+            </p>
+          </div>
+
+          <button class="start-btn" id="start-animation">
+            <span class="btn-icon">🎬</span>
+            Animasyonu Başlat
+          </button>
+          <p class="btn-subtitle">Veritabanı öğrenme yolculuğunuzu başlatın</p>
+        </div>
+
+        <div class="navigation">
+          <button class="nav-btn prev" id="prev-btn">
+            <span>←</span> Önceki
+          </button>
+          <button class="nav-btn restart" id="restart-btn">
+            <span>🔄</span> Baştan Başla
+          </button>
+          <button class="nav-btn next" id="next-btn">
+            Sonraki <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal" id="voiceover-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="speaker-icon">🎙️</span>
+            <h3>Bilgi</h3>
+          </div>
+          <div class="modal-body">
+            <p id="voiceover-text"></p>
+          </div>
+          <div class="modal-footer">
+            <button id="continue-btn">Devam Et</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "veri-tabani", 100);
+            window.location.href = "../../../testler/hash/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "veri-tabani";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "veri-tabani",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "veri-tabani" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

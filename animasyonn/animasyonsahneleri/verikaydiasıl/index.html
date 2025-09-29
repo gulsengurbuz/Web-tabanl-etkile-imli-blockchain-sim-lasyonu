@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veri Kaydı Animasyonu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Veri Kaydı Animasyonu</h1>
+        <p>Profesyonel eğitim animasyonu - 10 sahne</p>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-info">
+          <span id="scene-counter">Sahne 1 / 10</span>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="animation-card">
+        <div class="animation-content" id="animation-content"></div>
+      </div>
+
+      <div class="controls">
+        <button id="play-btn" class="btn btn-primary">
+          <i data-lucide="play"></i>
+          Başlat
+        </button>
+        <button id="restart-btn" class="btn btn-outline">
+          <i data-lucide="rotate-ccw"></i>
+          Yeniden Başlat
+        </button>
+        <button id="next-btn" class="btn btn-outline">
+          Sonraki Sahne
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="scene-info">
+        <div class="scene-title" id="scene-title">
+          Şu anki sahne: Veri Kaydı
+        </div>
+        <div class="scene-voiceover" id="scene-voiceover">
+          Veri kaydı, bir değeri zamanı ve kaynağıyla birlikte kaydetmektir.
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "veri-kaydi", 100);
+            window.location.href = "../../../testler/verikaydiasıl/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "veri-kaydi";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+      window.trackAnimation?.({
+        id: "veri-kaydi",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "veri-kaydi" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

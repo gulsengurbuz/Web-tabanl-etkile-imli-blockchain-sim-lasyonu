@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Fork Öğreticisi</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <div class="progress-container">
+        <div class="progress-info">
+          <span class="progress-text"
+            >Sahne <span id="current-scene">1</span> / 6</span
+          >
+          <span class="progress-percent"
+            ><span id="progress-percent">17</span>%</span
+          >
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="animation-card">
+        <div class="animation-content" id="animation-area"></div>
+      </div>
+
+      <div class="status-text" id="status-text" style="display: none">
+        <p id="status-message"></p>
+      </div>
+
+      <div
+        class="continue-container"
+        id="continue-container"
+        style="display: none"
+      >
+        <button class="continue-btn" id="continue-btn" disabled>
+          <span id="continue-text">Devam</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-title"></h2>
+        </div>
+        <div class="modal-body">
+          <p class="modal-description" id="modal-description"></p>
+          <div class="terms-section">
+            <h4 class="terms-title">Terimler:</h4>
+            <div class="terms-list" id="terms-list"></div>
+          </div>
+          <div class="modal-actions">
+            <button class="start-btn" id="start-btn" disabled>
+              <i class="fas fa-play"></i>
+              <span id="start-btn-text">İzle</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-screen" id="summary-screen" style="display: none">
+      <div class="summary-card">
+        <div class="summary-header">
+          <h1>Bugün Ne Öğrendik?</h1>
+          <p>Blockchain fork kavramlarının özeti</p>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-icon bg-blue">
+              <i class="fas fa-code-branch"></i>
+            </div>
+            <h3>Fork</h3>
+            <p>Aynı anda iki olası yol</p>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon bg-green">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Geçici fork</h3>
+            <p>Daha uzun kol kalır, kısa kol söner</p>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon bg-purple">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Soft fork</h3>
+            <p>Uyumlu; tek zincirde kalır</p>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon bg-red">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Hard fork</h3>
+            <p>Uyumsuz; iki ağ oluşabilir</p>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon bg-yellow">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3>Sürüm farkı</h3>
+            <p>Güncelle → birleş</p>
+          </div>
+        </div>
+        <div class="summary-actions">
+          <button class="restart-btn" id="restart-btn">
+            <i class="fas fa-redo"></i>
+            Baştan İzle
+          </button>
+          <button class="outline-btn">
+            <i class="fas fa-credit-card"></i>
+            Kavram Kartları
+          </button>
+          <button class="outline-btn">
+            <i class="fas fa-download"></i>
+            PDF Özet
+          </button>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "fork", 100);
+
+            window.location.href = "../../../testler/FORK/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "fork";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "fork",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "fork" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

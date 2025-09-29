@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proof of Stake Animation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="compact-frame">
+      <div class="container">
+        <!-- Header -->
+        <div class="header">
+          <h1 class="title">Proof of Stake</h1>
+          <p class="subtitle">
+            Blockchain'de yeni nesil konsensüs mekanizmasının nasıl çalıştığını
+            keşfedin
+          </p>
+        </div>
+
+        <div class="animation-card">
+          <div class="animation-overlay"></div>
+          <div class="scene-container" id="sceneContainer"></div>
+        </div>
+
+        <div class="scene-info-card">
+          <div class="scene-info-content">
+            <div class="scene-number" id="sceneNumber">1</div>
+            <div class="scene-details">
+              <h2 class="scene-title" id="sceneTitle">
+                Stake Havuzu Oluşturma
+              </h2>
+              <p class="scene-description" id="sceneDescription">
+                Kullanıcılar ellerindeki coinleri stake ederek doğrulayıcı olma
+                hakkı kazanır ve ağın güvenliğine katkıda bulunur.
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="prevBtn" class="btn btn-outline">
+            <span class="icon">⏮</span>
+            Önceki
+          </button>
+          <button id="playBtn" class="btn btn-primary">
+            <span class="icon" id="playIcon">▶</span>
+            <span id="playText">Oynat</span>
+          </button>
+          <button id="nextBtn" class="btn btn-outline">
+            Sonraki
+            <span class="icon">⏭</span>
+          </button>
+          <button id="resetBtn" class="btn btn-outline">
+            <span class="icon">↻</span>
+            Sıfırla
+          </button>
+        </div>
+
+        <div class="scene-navigation" id="sceneNavigation"></div>
+      </div>
+    </div>
+
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "pos", 100);
+            window.location.href = "../../../testler/pos/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "pos";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "pos",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "pos" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

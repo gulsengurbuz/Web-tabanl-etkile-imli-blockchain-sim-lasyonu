@@ -1,0 +1,408 @@
+.results-summary-container {
+  font-family: "Hanken Grotesk", sans-serif;
+  display: flex;
+  width: 800px;
+  height: 450px;
+  gap: 10px;
+  border-radius: 30px;
+  box-shadow: 10px 10px 30px rgba(10, 58, 140, 0.25);
+  backface-visibility: hidden;
+}
+
+.results-summary-container.heading-primary,
+.results-summary-container .heading-secondary,
+.heading-tertiary {
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.heading-primary {
+  font-size: 44px;
+  font-weight: 700;
+  /* Açık mavi → buz beyazı gradyan (koyu zeminde parlasın) */
+  background-image: linear-gradient(to right, #eaf6ff, #bfe3ff);
+  margin-bottom: 1rem;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.5);
+}
+
+.heading-secondary {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 20px;
+  letter-spacing: 1px;
+  color: #2bd0ff !important; /* cyan vurgu */
+}
+
+.heading-secondary--blue {
+  color: #1aa6ff;
+}
+
+.heading-tertiary {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #d9eeff;
+}
+
+.paragraph {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #d9eeff;
+  margin-bottom: 15px;
+}
+
+.paragraph-text-box {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-1 {
+  margin-bottom: 10px;
+}
+
+.results-summary-container__result {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+  border-radius: 30px 10px;
+  /* ANA GRADYAN: derin mavi → lacivert */
+  background: linear-gradient(135deg, #0f67d6 0%, #0b3e88 100%);
+  animation: gradient 10s linear infinite;
+  .result-box {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-position: 100% 50%;
+    /* Dairesel kutu: canlı mavi tonları */
+    background-image: linear-gradient(to bottom, #168be5, #0b5fb3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: gradient 10s linear infinite;
+  }
+
+  .result {
+    margin-top: -18px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #62b8ff; /* açık mavi metin */
+  }
+}
+
+.results-summary-container__options {
+  padding: 10px;
+}
+
+.summary-result-options {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* seçenek yüzeyleri: pastel mavi varyantlar */
+.result-option {
+  width: 300px;
+  height: 36px;
+  background-color: #bfe6ff; /* açık mavi */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.result-option-memory {
+  background-color: #c9f1ff; /* daha açık mavi */
+}
+
+.result-option-verbal {
+  background-color: #e6f6ff; /* buz mavisi */
+}
+
+.result-option-Visual {
+  background-color: #e0f0ff; /* pastel mavi */
+}
+
+.icon-box {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  gap: 1px;
+}
+
+/* ikon/metin vurguları – palete uygun */
+.reaction-icon-text {
+  color: #ff6b6b;
+}
+.memory-icon-text {
+  color: #ffc44d;
+}
+.verbal-icon-text {
+  color: #12d8b5;
+}
+.visual-icon-text {
+  color: #245fe6;
+}
+
+.result-box {
+  font-size: 14px;
+  color: #6ea8ff;
+  font-weight: 700;
+}
+
+.result-box span {
+  font-size: 14px;
+  color: #183b73; /* koyu mavi metin */
+}
+
+.btn-continue {
+  width: 100%;
+  padding: 10px;
+  color: #ffffff;
+  background-image: linear-gradient(to right, #0f67d6, #0b3e88);
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: background 10s linear infinite;
+}
+
+.btn-continue:hover {
+  transform: translateY(5px);
+  background-image: linear-gradient(to left, #168be5, #0a2e6b);
+}
+
+.icon {
+  cursor: pointer;
+  filter: grayscale(1);
+  transition: 0.3s linear;
+}
+
+.icon:hover {
+  filter: grayscale(0);
+}
+
+/* buton arka planı animasyonu – aynı palet */
+@keyframes background {
+  0% {
+    background-image: linear-gradient(to right, #168be5, #0a3a8c);
+  }
+  50% {
+    background-image: linear-gradient(to right, #0f67d6, #0b3e88);
+  }
+  100% {
+    background-image: linear-gradient(to right, #62abef, #0b3e9c);
+  }
+}
+
+/* panel gradyanı animasyonu – aynı paletle çeşit */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+    background-image: linear-gradient(-45deg, #2bd0ff, #0f67d6);
+  }
+  50% {
+    background-position: 100% 50%;
+    background-image: linear-gradient(to bottom, #1aa6ff, #0b3e88);
+  }
+  100% {
+    background-position: 0% 50%;
+    background-image: linear-gradient(to top, #2bd0ff, #1a57ff);
+  }
+}
+
+/* konfeti: mavi/cyan gamı */
+.confetti {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 240px;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  background-color: #1aa6ff; /* mavi konfeti */
+  top: 0;
+  opacity: 0;
+  animation: makeItRain 3000ms infinite linear;
+}
+
+.confetti-piece:nth-child(1) {
+  left: 7%;
+  transform: rotate(-10deg);
+  animation-delay: 182ms;
+  animation-duration: 2000ms;
+}
+.confetti-piece:nth-child(2) {
+  left: 14%;
+  transform: rotate(20deg);
+  animation-delay: 161ms;
+  animation-duration: 2076ms;
+}
+.confetti-piece:nth-child(3) {
+  left: 21%;
+  transform: rotate(-51deg);
+  animation-delay: 481ms;
+  animation-duration: 2103ms;
+}
+.confetti-piece:nth-child(4) {
+  left: 28%;
+  transform: rotate(61deg);
+  animation-delay: 334ms;
+  animation-duration: 1008ms;
+}
+.confetti-piece:nth-child(5) {
+  left: 35%;
+  transform: rotate(-52deg);
+  animation-delay: 302ms;
+  animation-duration: 1776ms;
+}
+.confetti-piece:nth-child(6) {
+  left: 42%;
+  transform: rotate(38deg);
+  animation-delay: 180ms;
+  animation-duration: 1168ms;
+}
+.confetti-piece:nth-child(7) {
+  left: 49%;
+  transform: rotate(11deg);
+  animation-delay: 395ms;
+  animation-duration: 1200ms;
+}
+.confetti-piece:nth-child(8) {
+  left: 56%;
+  transform: rotate(49deg);
+  animation-delay: 14ms;
+  animation-duration: 1887ms;
+}
+.confetti-piece:nth-child(9) {
+  left: 63%;
+  transform: rotate(-72deg);
+  animation-delay: 149ms;
+  animation-duration: 1805ms;
+}
+.confetti-piece:nth-child(10) {
+  left: 70%;
+  transform: rotate(10deg);
+  animation-delay: 351ms;
+  animation-duration: 2059ms;
+}
+.confetti-piece:nth-child(11) {
+  left: 77%;
+  transform: rotate(4deg);
+  animation-delay: 307ms;
+  animation-duration: 1132ms;
+}
+.confetti-piece:nth-child(12) {
+  left: 84%;
+  transform: rotate(42deg);
+  animation-delay: 464ms;
+  animation-duration: 1776ms;
+}
+.confetti-piece:nth-child(13) {
+  left: 91%;
+  transform: rotate(-72deg);
+  animation-delay: 429ms;
+  animation-duration: 1818ms;
+}
+.confetti-piece:nth-child(14) {
+  left: 94%;
+  transform: rotate(-72deg);
+  animation-delay: 429ms;
+  animation-duration: 818ms;
+}
+.confetti-piece:nth-child(15) {
+  left: 96%;
+  transform: rotate(-72deg);
+  animation-delay: 429ms;
+  animation-duration: 2818ms;
+}
+.confetti-piece:nth-child(16) {
+  left: 98%;
+  transform: rotate(-72deg);
+  animation-delay: 429ms;
+  animation-duration: 2818ms;
+}
+.confetti-piece:nth-child(17) {
+  left: 50%;
+  transform: rotate(-72deg);
+  animation-delay: 429ms;
+  animation-duration: 2818ms;
+}
+.confetti-piece:nth-child(18) {
+  left: 60%;
+  transform: rotate(-72deg);
+  animation-delay: 429ms;
+  animation-duration: 1818ms;
+}
+
+.confetti-piece:nth-child(odd) {
+  background-color: #2bd0ff;
+} /* neon-cyan */
+.confetti-piece:nth-child(even) {
+  z-index: 1;
+}
+
+.confetti-piece:nth-child(4n) {
+  width: 6px;
+  height: 14px;
+  animation-duration: 4000ms;
+  background-color: #2bd0ff; /* cyan varyasyon */
+}
+
+.confetti-piece:nth-child(5n) {
+  width: 3px;
+  height: 10px;
+  animation-duration: 4000ms;
+  background-color: #6ec1ff; /* açık mavi çeşit */
+}
+
+.confetti-piece:nth-child(3n) {
+  width: 4px;
+  height: 12px;
+  animation-duration: 2500ms;
+  animation-delay: 3000ms;
+  background-color: #0f67d6; /* ana mavi */
+}
+
+.confetti-piece:nth-child(3n-7) {
+  background-color: #12d8b5; /* turkuaz çeşitlilik */
+}
+
+@keyframes makeItRain {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(250px);
+  }
+}

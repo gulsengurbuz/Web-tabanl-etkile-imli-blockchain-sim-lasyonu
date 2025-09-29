@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hibrit Blockchain Simülasyonu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header">
+        <h1>🔀 BLOCKCHAIN TÜRLERİ</h1>
+        <p>Açık, Kapalı ve Hibrit Sistemler</p>
+      </div>
+
+      <div id="blockchain-container" class="blockchain-grid">
+        <div id="open-blockchain" class="blockchain-card open-card">
+          <div class="card-header">
+            <h3>🔓 AÇIK BLOCKCHAIN</h3>
+          </div>
+          <div class="card-content">
+            <div id="open-blocks" class="blocks-container"></div>
+          </div>
+        </div>
+
+        <div
+          id="hybrid-blockchain"
+          class="blockchain-card hybrid-card"
+          style="display: none"
+        >
+          <div class="card-header">
+            <h3>🔀 HYBRID BLOCK</h3>
+          </div>
+          <div class="card-content">
+            <div id="hybrid-blocks" class="blocks-container"></div>
+          </div>
+        </div>
+
+        <div id="private-blockchain" class="blockchain-card private-card">
+          <div class="card-header">
+            <h3>🔒 KAPALI BLOCKCHAIN</h3>
+          </div>
+          <div class="card-content">
+            <div id="private-blocks" class="blocks-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="user-roles-section" class="user-roles" style="display: none">
+        <h2>👥 Kullanıcı Rolleri ve Görüntüleme Hakları</h2>
+        <div class="roles-grid">
+          <div class="role-card" data-role="citizen">
+            <div class="role-header">
+              <span class="role-icon">👥</span>
+              <h4>Vatandaş</h4>
+            </div>
+            <div class="role-permissions">
+              <div class="permission">
+                <span>Açık:</span>
+                <span class="permission-icon can-view">👁️</span>
+              </div>
+              <div class="permission">
+                <span>Kapalı:</span>
+                <span class="permission-icon cannot-view">🚫</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="role-card" data-role="employee">
+            <div class="role-header">
+              <span class="role-icon">🏢</span>
+              <h4>Çalışan</h4>
+            </div>
+            <div class="role-permissions">
+              <div class="permission">
+                <span>Açık:</span>
+                <span class="permission-icon can-view">👁️</span>
+              </div>
+              <div class="permission">
+                <span>Kapalı:</span>
+                <span class="permission-icon can-view">👁️</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="role-card" data-role="auditor">
+            <div class="role-header">
+              <span class="role-icon">⚖️</span>
+              <h4>Denetçi</h4>
+            </div>
+            <div class="role-permissions">
+              <div class="permission">
+                <span>Açık:</span>
+                <span class="permission-icon can-view">👁️</span>
+              </div>
+              <div class="permission">
+                <span>Kapalı:</span>
+                <span class="permission-icon can-view">👁️</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="final-section" class="final-section" style="display: none">
+        <h2>🧪 Rol Bazlı Görünürlük Simülasyonu</h2>
+        <p>
+          Farklı rolleri seçerek blockchain verilerinin nasıl görüntülendiğini
+          gözlemleyin
+        </p>
+        <button id="complete-simulation" class="btn btn-primary">
+          Simülasyonu Tamamla
+        </button>
+      </div>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "hibrit-modeller", 100);
+            window.location.href =
+              "../../../testler/hibritblockchain/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "hibrit-modeller";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "hibrit-modeller",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "hibrit-modeller" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

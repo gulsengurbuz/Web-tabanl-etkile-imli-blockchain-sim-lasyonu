@@ -1,0 +1,182 @@
+.main-all {
+  margin-top: 5rem;
+}
+
+.card-blog {
+  width: 17rem;
+
+  border-radius: 20px;
+  margin-left: 3rem;
+  /* Card arka plan gradyanı (derin mavi → lacivert) */
+  background: linear-gradient(135deg, #0f67d6 0%, #0b3e88 100%);
+
+  padding: 10px;
+  overflow: hidden;
+  /* Daha derin mavi gölge */
+  box-shadow: rgba(3, 24, 61, 0.45) 0px 7px 20px 0px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-blog:hover {
+  transform: scale(1.05);
+}
+
+.card-blog .top-section.animasyon {
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background: url("../../img/hashhome.png") center/cover no-repeat;
+  position: relative;
+}
+.card-blog .top-section.video {
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background: url("../../img/blokhome.png") center/cover no-repeat;
+  position: relative;
+}
+.card-blog .top-section.test {
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background: url("../../img/forkhome.png") center/cover no-repeat;
+  position: relative;
+}
+.card-blog .top-section.makale {
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background: url("../../img/makalehome.png") center/cover no-repeat;
+  position: relative;
+}
+
+.card-blog .top-section .border {
+  border-bottom-right-radius: 10px;
+  height: 30px;
+  width: 130px;
+  background: white;
+  /* Vurgu şeridi – neon cyan */
+  background: #2bd0ff;
+  position: relative;
+  transform: skew(-40deg);
+  /* Cyan-mavi ışıma */
+  box-shadow: -10px -10px 0 0 #0a3a8c77;
+}
+
+.card-blog .top-section .border::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  right: -15px;
+  background: rgba(255, 255, 255, 0);
+  border-top-left-radius: 10px;
+  /* Neon kenar vurgusu */
+  box-shadow: -5px -5px 0 2px #2bd0ff;
+}
+
+.card-blog .top-section::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: rgba(255, 255, 255, 0);
+  height: 15px;
+  width: 15px;
+  border-top-left-radius: 15px;
+  /* Üst sol köşe parıltısı */
+  box-shadow: -5px -5px 0 2px #1aa6ff;
+}
+
+.card-blog .top-section .icons {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-blog .top-section .icons .logo {
+  height: 100%;
+  aspect-ratio: 1;
+  color: white;
+  font-weight: 800;
+  padding: 7px 0 7px 15px;
+}
+
+.card-blog .top-section .icons .logo .top-section {
+  height: 100%;
+}
+
+.card-blog .top-section .icons .social-media {
+  height: 100%;
+  padding: 8px 15px;
+  display: flex;
+  gap: 7px;
+}
+
+.card-blog .top-section .icons .social-media .svg {
+  height: 100%;
+  fill: #ffffff;
+}
+
+.card-blog .top-section .icons .social-media .svg:hover {
+  fill: white;
+}
+
+.card-blog .bottom-section {
+  margin-top: 15px;
+  padding: 10px 5px;
+}
+
+.card-blog .bottom-section .title {
+  display: block;
+  font-size: 17px;
+  font-weight: bolder;
+  /* Başlık: açık mavi-beyaz */
+  color: #eaf6ff;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.card-blog .bottom-section .paragraf {
+  /* Metin: yumuşak mavi */
+  color: #cfe6ff;
+  font-size: 12px;
+  text-align: center;
+}
+
+.card-blog .bottom-section .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.card-blog .bottom-section .row .item {
+  flex: 30%;
+  text-align: center;
+
+  padding: 5px;
+  /* Alt bilgi yazıları: yarı saydam açık mavi */
+  color: rgba(234, 246, 255, 0.78);
+}
+
+.card-blog .bottom-section .row .item .big-text {
+  font-size: 12px;
+  display: block;
+}
+
+.card-blog .bottom-section .row .item .regular-text {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.card-blog .bottom-section .row .item:nth-child(2) {
+  border-left: 1px solid rgba(255, 255, 255, 0.126);
+  border-right: 1px solid rgba(255, 255, 255, 0.126);
+}

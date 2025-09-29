@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blok Yapısı Testi</title>
+
+    
+    <link rel="stylesheet" href="../_shared/test-style.css" />
+    
+    <link rel="stylesheet" href="./style.css" />
+    
+    <link rel="stylesheet" href="../_shared/review-style.css" />
+  </head>
+  <body>
+    <div id="app" class="test-wrap"></div>
+
+    <script type="module">
+      import { requireLogin, startTest } from "../_shared/test-engine.js";
+      import questions from "./script.js";
+      import { showReview, calcScorePercent } from "../_shared/review-view.js";
+
+      // 1) Giriş kontrolü
+      await requireLogin();
+
+      // 2) Testi başlat — CALLBACK VARSA buradaki onFinish çalışır
+      startTest({
+        testId: "blok-yapisi",
+        title: "Blok Yapısı",
+        questions,
+        passPercent: 60,
+        // startTest bu callback'i destekliyorsa — bitince direkt review'u aç
+        onFinish: ({ answers, scorePercent }) => {
+          const sp =
+            typeof scorePercent === "number"
+              ? scorePercent
+              : calcScorePercent(questions, answers || []);
+          showReview({
+            mount: "#app",
+            title: "Blok Yapısı — Gözden Geçir",
+            questions,
+            userAnswers: answers || [],
+            scorePercent: sp,
+            passPercent: 60,
+          });
+        },
+      });
+
+      // 3) CALLBACK YOKSA — motor bitince "test:finished" event'i atıyorsa burası devreye girer
+      window.addEventListener("test:finished", (e) => {
+        const answers =
+          (e.detail && e.detail.answers) || window.__answers || [];
+        const sp = calcScorePercent(questions, answers);
+        showReview({
+          mount: "#app",
+          title: "Blok Yapısı — Gözden Geçir",
+          questions,
+          userAnswers: answers,
+          scorePercent: sp,
+          passPercent: 60,
+        });
+      });
+
+      // 4) (İsteğe bağlı köprü) Eğer motor hiçbir event göndermiyor ve callback yoksa:
+      //    — "Bitir" butonu handler'ına 1 satır eklemen yeterli:
+      // window.dispatchEvent(new CustomEvent("test:finished", { detail: { answers } }));
+      //    — veya motor, cevapları window.__answers'a yazıyorsa Bitir anında şu satırı çağır:
+      // window.dispatchEvent(new CustomEvent("test:finished", { detail: { answers: window.__answers } }));
+    </script>
+  </body>
+</html>

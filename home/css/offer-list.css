@@ -1,0 +1,8 @@
+.offer-suggestion-main .osm-container .content .offer-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 100px;
+  gap: 30px;
+}

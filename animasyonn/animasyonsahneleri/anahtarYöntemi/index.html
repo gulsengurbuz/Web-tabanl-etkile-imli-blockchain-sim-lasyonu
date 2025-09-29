@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Kriptografi: Anahtar Yönetimi</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  </head>
+  <body>
+    <div class="key-animation-container">
+      <div class="key-main-card">
+        <div class="key-header">
+          <h1>Blockchain Kriptografi: Anahtar Yönetimi</h1>
+          <div class="key-progress-bar">
+            <div class="key-progress-fill" id="progressFill"></div>
+          </div>
+          <p id="sceneCounter">Sahne 1 / 6</p>
+        </div>
+
+        <div class="key-scene-container" id="sceneContainer">
+          <div class="key-animation-area" id="animationArea">
+            <div class="key-scene key-scene1" id="scene1">
+              <div class="key-seed-phrase">
+                <div class="key-seed-grid">
+                  <div class="key-seed-word">forest</div>
+                  <div class="key-seed-word">brave</div>
+                  <div class="key-seed-word">ocean</div>
+                  <div class="key-seed-word">wisdom</div>
+                  <div class="key-seed-word">mountain</div>
+                  <div class="key-seed-word">dream</div>
+                  <div class="key-seed-word">light</div>
+                  <div class="key-seed-word">peace</div>
+                  <div class="key-seed-word">journey</div>
+                  <div class="key-seed-word">hope</div>
+                  <div class="key-seed-word">trust</div>
+                  <div class="key-seed-word">future</div>
+                </div>
+              </div>
+              <div class="key-light-beams" id="lightBeams1"></div>
+              <div class="key-private-key" id="privateKey1">
+                <div class="key-box">
+                  <i data-lucide="lock" class="key-icon"></i>
+                  <span>Private Key: 0x7a8b9c...</span>
+                </div>
+              </div>
+              <div class="key-public-key" id="publicKey1">
+                <div class="key-box">
+                  <i data-lucide="key" class="key-icon"></i>
+                  <span>Public Key: 0x4f5e6d...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="key-scene key-scene2" id="scene2">
+              <div class="key-wallet">
+                <div class="key-safe">
+                  <i data-lucide="shield-check" class="key-shield"></i>
+                  <div class="key-safe-text">Blockchain Cüzdan</div>
+                  <div class="key-safe-door" id="safeDoor">
+                    <i data-lucide="lock" class="key-door-lock"></i>
+                  </div>
+                </div>
+                <div class="key-private-entering" id="privateEntering">
+                  <div class="key-box">
+                    <i data-lucide="lock" class="key-icon"></i>
+                    <span>Private Key</span>
+                  </div>
+                </div>
+                <div class="key-public-radiating" id="publicRadiating">
+                  <div class="key-box">
+                    <i data-lucide="key" class="key-icon"></i>
+                    <span>Public Key</span>
+                  </div>
+                  <div class="key-light-rays" id="lightRays2"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="key-scene key-scene3" id="scene3">
+              <div class="key-signing-flow">
+                <div class="key-transaction-data">
+                  <div class="key-transaction-box" id="transactionBox">
+                    <i data-lucide="file-text" class="key-transaction-icon"></i>
+                    <div class="key-transaction-content">
+                      <div class="key-transaction-title">İşlem Verisi</div>
+                      <div class="key-transaction-details">
+                        <div>Gönderen: 0x1a2b...</div>
+                        <div>Alıcı: 0x3c4d...</div>
+                        <div>Miktar: 1.5 ETH</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="key-arrow" id="arrow1">
+                  <i data-lucide="arrow-right"></i>
+                </div>
+                <div class="key-private-key-signing">
+                  <div class="key-signing-box" id="signingBox">
+                    <i data-lucide="lock" class="key-icon"></i>
+                    <div>Özel Anahtar</div>
+                  </div>
+                </div>
+                <div class="key-arrow" id="arrow2">
+                  <i data-lucide="arrow-right"></i>
+                </div>
+                <div class="key-signature" id="signature">
+                  <div class="key-signature-box">
+                    <i data-lucide="pen-tool" class="key-signature-icon"></i>
+                    <div class="key-signature-content">
+                      <div>Dijital İmza</div>
+                      <div class="key-signature-hash">0x9f8e7d...</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="key-arrow" id="arrow3">
+                  <i data-lucide="arrow-right"></i>
+                </div>
+                <div class="key-blockchain-block" id="blockchainBlock">
+                  <div class="key-blockchain-box">
+                    <i data-lucide="blocks" class="key-blockchain-icon"></i>
+                    <div class="key-blockchain-content">
+                      <div>Blockchain</div>
+                      <div class="key-blockchain-dots">
+                        <div class="key-dot"></div>
+                        <div class="key-dot"></div>
+                        <div class="key-dot"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="key-scene key-scene4" id="scene4">
+              <div class="key-central-public-key">
+                <div class="key-central-key">
+                  <i data-lucide="key"></i>
+                </div>
+                <div class="key-central-text">Açık Anahtar</div>
+              </div>
+              <div class="key-user-devices" id="userDevices"></div>
+              <div class="key-hidden-private">
+                <div class="key-hidden-box">
+                  <i data-lucide="eye-off" class="key-icon"></i>
+                  <span>Özel Anahtar (Gizli)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="key-scene key-scene5" id="scene5">
+              <div class="key-rotation-flow">
+                <div class="key-old-key" id="oldKey">
+                  <div class="key-old-box">
+                    <i data-lucide="key"></i>
+                  </div>
+                  <div>Eski Anahtar</div>
+                </div>
+
+                <div class="key-rotation-arrow" id="rotationArrow">
+                  <i data-lucide="refresh-cw"></i>
+                </div>
+                <div class="key-new-key" id="newKey">
+                  <div class="key-new-box">
+                    <i data-lucide="key"></i>
+                  </div>
+                  <div>Yeni Anahtar</div>
+                </div>
+              </div>
+              <div class="key-dust-particles" id="dustParticles"></div>
+              <div class="key-blockchain-update" id="blockchainUpdate">
+                <div class="key-update-box">
+                  <i data-lucide="check-circle" class="key-update-icon"></i>
+                  Zincir Bağlantısı Güncellendi
+                </div>
+              </div>
+            </div>
+
+            <div class="key-scene key-scene6" id="scene6">
+              <div class="key-alert" id="alert">
+                <div class="key-alert-box">
+                  <i data-lucide="alert-triangle" class="key-alert-icon"></i>
+                  <span>GÜVENLİK UYARISI!</span>
+                </div>
+              </div>
+              <div class="key-revocation-flow">
+                <div class="key-compromised-key" id="compromisedKey">
+                  <div class="key-compromised-box">
+                    <i data-lucide="key" class="key-compromised-icon"></i>
+                    <div class="key-crack" id="crack"></div>
+
+                    <div class="key-x-mark" id="xMark">
+                      <i data-lucide="x"></i>
+                    </div>
+                  </div>
+                  <div>Tehlikeye Giren Anahtar</div>
+                </div>
+                <div class="key-arrow" id="revocationArrow">
+                  <i data-lucide="arrow-right"></i>
+                </div>
+                <div class="key-new-key-generation" id="newKeyGeneration">
+                  <div class="key-new-secure-box">
+                    <i data-lucide="key"></i>
+                  </div>
+                  <div>Yeni Güvenli Anahtar</div>
+                  <div class="key-sparkles" id="sparkles"></div>
+                </div>
+              </div>
+              <div class="key-status-message" id="statusMessage">
+                <div class="key-status-box">
+                  <i data-lucide="shield-check" class="key-status-icon"></i>
+                  Güvenlik Geri Yüklendi
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-scene-info">
+            <h2 id="sceneTitle">Tohumdan Anahtarın Doğuşu</h2>
+            <p id="sceneDescription">
+              Blockchain güvenliğinin temeli olan kriptografik anahtarlar,
+              güvenli bir tohum cümlesinden türetilir. Bu süreç, özel
+              anahtarınızın benzersizliğini ve güvenliğini garanti eder.
+            </p>
+          </div>
+        </div>
+
+        <div class="key-controls">
+          <button
+            class="key-btn key-prev-btn"
+            id="prevBtn"
+            onclick="prevScene()"
+          >
+            <i data-lucide="chevron-left"></i>
+            Önceki
+          </button>
+          <button
+            class="key-btn key-reset-btn"
+            id="resetBtn"
+            onclick="resetAnimation()"
+          >
+            <i data-lucide="rotate-ccw"></i>
+            Baştan Başla
+          </button>
+          <button
+            class="key-btn key-next-btn"
+            id="nextBtn"
+            onclick="nextScene()"
+          >
+            Devam Et
+            <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "Anahtar-yonetimi", 100);
+
+            window.location.href = "../../../testler/anahtarYöntemi/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "anahtar-yonetimi";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "anahtar-yonetimi",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "anahtar-yonetimi" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

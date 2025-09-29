@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veri Quiz</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        padding: 20px;
+      }
+      .q {
+        margin-bottom: 16px;
+      }
+      button {
+        padding: 10px 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Veri — Mini Quiz</h1>
+
+    <div class="q">
+      <p>1) Veri nedir?</p>
+      <label
+        ><input type="radio" name="q1" value="1" /> Olayların kaydının
+        temsili</label
+      ><br />
+      <label><input type="radio" name="q1" value="0" /> Yalnızca sayılar</label>
+    </div>
+
+    <div class="q">
+      <p>2) Metin bir veri türüdür.</p>
+      <label><input type="radio" name="q2" value="1" /> Doğru</label><br />
+      <label><input type="radio" name="q2" value="0" /> Yanlış</label>
+    </div>
+
+    <div class="q">
+      <p>3) Görsel (resim) veri olamaz.</p>
+      <label><input type="radio" name="q3" value="0" /> Doğru</label><br />
+      <label><input type="radio" name="q3" value="1" /> Yanlış</label>
+    </div>
+
+    <div class="q">
+      <p>4) Ses bir veri türüdür.</p>
+      <label><input type="radio" name="q4" value="1" /> Doğru</label><br />
+      <label><input type="radio" name="q4" value="0" /> Yanlış</label>
+    </div>
+
+    <div class="q">
+      <p>5) Veri sadece sayısal olabilir.</p>
+      <label><input type="radio" name="q5" value="0" /> Doğru</label><br />
+      <label><input type="radio" name="q5" value="1" /> Yanlış</label>
+    </div>
+
+    <button id="submitQuizBtn">Sonucu Kaydet</button>
+
+    <script type="module">
+      import { saveQuizResult } from "../shared/progress-client.js";
+
+      function hesaplaSkor() {
+        let score = 0;
+        for (let i = 1; i <= 5; i++) {
+          const checked = document.querySelector(`input[name="q${i}"]:checked`);
+          score += Number(checked?.value || 0);
+        }
+        return score;
+      }
+
+      document
+        .getElementById("submitQuizBtn")
+        .addEventListener("click", async () => {
+          try {
+            const total = 5;
+            const score = hesaplaSkor();
+            await saveQuizResult(1, score, total, "Veri");
+            alert(`Kaydedildi! Skor: ${score}/${total}`);
+
+            window.location.href = "/home/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+  </body>
+</html>

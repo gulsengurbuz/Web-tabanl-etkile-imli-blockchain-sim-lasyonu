@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlockchainAkademi - Giriş & Kayıt</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="auth-wrapper">
+        <div class="header">
+          <div class="logo">
+            <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+            <h1>Blockchain<span class="highlight">Akademi</span></h1>
+          </div>
+          <p class="subtitle">
+            Blockchain dünyasında uzmanlaşın ve geleceği şekillendirin
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-book-open"></i><span>Kapsamlı Eğitim</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-chart-line"></i><span>Kariyer Gelişimi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-card">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="login">Giriş Yap</button>
+            <button class="tab-btn" data-tab="signup">Kaydol</button>
+          </div>
+
+          <div class="tab-content active" id="login">
+            <div class="form-header">
+              <h2>Hesabınıza Giriş Yapın</h2>
+              <p>Blockchain eğitiminize kaldığınız yerden devam edin</p>
+            </div>
+            <form class="auth-form" id="loginForm" autocomplete="on">
+              <div class="form-group">
+                <label for="login-username">E-posta</label>
+                <input
+                  type="email"
+                  id="login-username"
+                  placeholder="E-posta adresiniz"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="login-password">Şifre</label>
+                <div class="password-input">
+                  <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Şifrenizi giriniz"
+                    autocomplete="current-password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="login-password"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="forgot-password">
+                <a href="#" class="link">Şifremi Unuttum?</a>
+              </div>
+              <button type="submit" class="submit-btn">Giriş Yap</button>
+            </form>
+          </div>
+
+          <div class="tab-content" id="signup">
+            <div class="form-header">
+              <h2>Hesap Oluşturun</h2>
+              <p>Blockchain dünyasına adım atın ve öğrenmeye başlayın</p>
+            </div>
+            <form class="auth-form" id="signupForm" autocomplete="on">
+              <div class="form-group">
+                <label for="signup-email">E-mail</label>
+                <input
+                  type="email"
+                  id="signup-email"
+                  placeholder="E-mail adresinizi giriniz"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signup-username">Kullanıcı Adı</label>
+                <input
+                  type="text"
+                  id="signup-username"
+                  placeholder="Kullanıcı adınızı giriniz"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signup-password">Şifre</label>
+                <div class="password-input">
+                  <input
+                    type="password"
+                    id="signup-password"
+                    placeholder="Şifrenizi giriniz"
+                    autocomplete="new-password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="signup-password"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="signup-confirm-password"
+                  >Şifrenizi Tekrar Giriniz</label
+                >
+                <div class="password-input">
+                  <input
+                    type="password"
+                    id="signup-confirm-password"
+                    placeholder="Şifrenizi tekrar giriniz"
+                    autocomplete="new-password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="signup-confirm-password"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <button type="submit" class="submit-btn">Kaydol</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer">
+          <p>
+            Hesap oluşturarak <a href="#" class="link">Kullanım Şartları</a> ve
+            <a href="#" class="link">Gizlilik Politikası</a>'nı kabul etmiş
+            olursunuz.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="../firebase-init.js"></script>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blockchain Testi</title>
+  <link rel="stylesheet" href="../_shared/test-style.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="app" class="test-wrap"></div>
+  <script type="module">
+    import { requireLogin, startTest } from "../_shared/test-engine.js";
+    import questions from "./script.js";
+    await requireLogin();
+    startTest({ testId: "blockchain", title: "Blockchain", questions, passPercent: 60 });
+  </script>
+</body>
+</html>

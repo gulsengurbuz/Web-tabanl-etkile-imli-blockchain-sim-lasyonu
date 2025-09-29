@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../home/css/navbar.css" />
+    <link rel="stylesheet" href="../home/css/background.css" />
+    <link rel="stylesheet" href="../home/css/logo.css" />
+    <link rel="stylesheet" href="../home/css/arkalan.css" />
+    <link rel="stylesheet" href="../home/css/blog-card.css" />
+    <link rel="stylesheet" href="../home/css/yeni-eklene.css" />
+    <link rel="stylesheet" href="../home/css/offer-part.css" />
+    <link rel="stylesheet" href="../home/css/user-suggestion.css" />
+    <link rel="stylesheet" href="../home/css/eyes.css" />
+    <link rel="stylesheet" href="../home/css/progress-icon.css" />
+    <link rel="stylesheet" href="../home/css/boxes-progress.css" />
+    <link rel="stylesheet" href="../home/css/proposal-container.css" />
+    <link rel="stylesheet" href="../home/css/offer-list.css" />
+    <link rel="stylesheet" href="../home/css/loader.css" />
+    <link rel="stylesheet" href="../home/css/footer.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Prompt&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" id="home-nav">
+      <div class="container-fluid nav-container" id="home-container">
+        <a href="../home/index.html" class="navbar-brand home-logo">
+          <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </a>
+        <div class="container-logo">
+          <div class="pane">
+            <label class="label">
+              <span>Blockchain Akademi</span>
+            </label>
+          </div>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 navbar-link-text">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../home/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../animasyonn/index.html">Animasyon</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../videoo/index.html">Video</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../oyunlar/index.html">Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../makalee/index.html">Makale</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../hakkımızda/index.html">Hakkımızda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../iletsim/index.html">İletişim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../profilll2/index.html">Profil</a>
+            </li>
+          </ul>
+
+          <div class="kisisel-not-alma"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="gradient"></div>
+      <canvas id="network"></canvas>
+      <div class="cubes">
+        <div class="cube cube-a"></div>
+        <div class="cube cube-b"></div>
+        <div class="cube cube-c"></div>
+      </div>
+
+      <div class="content-headers">
+        <div class="brand">
+          <img
+            src="./css/logo.svg"
+            alt="Blockchain Akademi Logosu"
+            class="logo"
+          />
+          <h1>Blockchain Akademi</h1>
+        </div>
+        <p class="subtitle">
+          İzle, etkileş, öğren: sahne sahne ilerleyen görsel anlatımlar ve canlı
+          simülasyonlarla blockchain’i deneyimle.
+        </p>
+        <div class="cta">
+          <a class="btn ghost" href="#">Tüm Modülleri Gör</a>
+        </div>
+      </div>
+    </section>
+
+    <main class="main-all">
+      <div class="main-container">
+        <div class="main-content d-flex justify-content-center">
+          <div class="block-animation">
+            <div class="card-blog">
+              <div class="top-section animasyon">
+                <div class="border"></div>
+                <div class="icons">
+                  <div class="logo">Animasyon</div>
+                  <div class="social-media">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M1 4 L10 1 L19 4 L19 16 L10 19 L1 16 Z"
+                        fill="#003366"
+                      />
+                      <path d="M1 4 L1 16 L10 19 L10 10 Z" fill="#002244" />
+                      <path d="M19 4 L19 16 L10 10 L10 1 Z" fill="#002244" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-section">
+                <span class="title">Hash (SHA-256) — İnteraktif Animasyon</span>
+                <div class="paragraf">
+                  Veri türleri → SHA-256 kutusu, tek yönlülük, “aynı veri = aynı
+                  hash”, çığ etkisi ve sabit uzunluk ilkelerini 7 sahnede
+                  anlatır. 6. sahnede kendi metnini/dosyanı hash’lersin
+                </div>
+                <div class="row row1">
+                  <div class="item">
+                    <span class="big-text">7 Sahne</span>
+                    <span class="regular-text">Akış</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">İnteraktif</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">Quiz’e Geç</span>
+                    <span class="regular-text">Tamamlanınca</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block-video">
+            <div class="card-blog">
+              <div class="top-section video">
+                <div class="border"></div>
+                <div class="icons">
+                  <div class="logo">Video</div>
+                  <div class="social-media">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M1 4 L10 1 L19 4 L19 16 L10 19 L1 16 Z"
+                        fill="#003366"
+                      />
+                      <path d="M1 4 L1 16 L10 19 L10 10 Z" fill="#002244" />
+                      <path d="M19 4 L19 16 L10 10 L10 1 Z" fill="#002244" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-section">
+                <span class="title"
+                  >Blok Yapısı 101: Başlık, Nonce, Zorluk</span
+                >
+                <div class="paragraf">
+                  Blok başlığı alanları, önceki hash bağlantısı, nonce ve zorluk
+                  hedefi adım adım açıklanır. Küçük bir demoyla “neden doğru
+                  nonce’ı arıyoruz?” sorusuna pratik cevap verilir.
+                </div>
+                <div class="row row1">
+                  <div class="item">
+                    <span class="big-text">12:45</span>
+                    <span class="regular-text">Süre</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">Bölüm 1/1</span>
+                    <span class="regular-text">Seri</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">TR</span>
+                    <span class="regular-text">Dil</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block-games">
+            <div class="card-blog">
+              <div class="top-section test">
+                <div class="border"></div>
+                <div class="icons">
+                  <div class="logo">Test</div>
+                  <div class="social-media">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M1 4 L10 1 L19 4 L19 16 L10 19 L1 16 Z"
+                        fill="#003366"
+                      />
+                      <path d="M1 4 L1 16 L10 19 L10 10 Z" fill="#002244" />
+                      <path d="M19 4 L19 16 L10 10 L10 1 Z" fill="#002244" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-section">
+                <span class="title">Çatallaşma (Fork) Testi </span>
+                <div class="paragraf">
+                  Soft vs hard fork, geçici ayrışmalar (temporary fork), reorg,
+                  UASF, version bits, zincir bölünmesi ve replay koruması,
+                  istemci çeşitliliği gibi başlıkları ölçer. Her soruda kısa
+                  “neden” açıklaması vardır.
+                </div>
+                <div class="row row1">
+                  <div class="item">
+                    <span class="big-text">22</span>
+                    <span class="regular-text">Soru</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">%70</span>
+                    <span class="regular-text">Geçme</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">12 dk</span>
+                    <span class="regular-text">Süre</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block-blog">
+            <div class="card-blog">
+              <div class="top-section makale">
+                <div class="border"></div>
+                <div class="icons">
+                  <div class="logo">Makale</div>
+                  <div class="social-media">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M1 4 L10 1 L19 4 L19 16 L10 19 L1 16 Z"
+                        fill="#003366"
+                      />
+                      <path d="M1 4 L1 16 L10 19 L10 10 Z" fill="#002244" />
+                      <path d="M19 4 L19 16 L10 10 L10 1 Z" fill="#002244" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bottom-section">
+                <span class="title">Blockchain Makaleleri</span>
+
+                <div class="paragraf">
+                  Bu bölüm; canlı arama, kategori/etiket filtreleri, üstte hızlı
+                  chip filtreleri, tarih/okunma bazlı sıralama ve PDF’e tek tık
+                  erişimsunar. Makaleleri konu, alt kategori, tür, etiket ve
+                  teknik anahtar kelimelere göre tablo görünümünde gezebilir.
+                </div>
+
+                <div class="row row1">
+                  <div class="item">
+                    <span class="regular-text">arama</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">Filtreleme</span>
+                  </div>
+                  <div class="item">
+                    <span class="big-text">Sıralama</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section class="ordering-section">
+      <div class="container">
+        <div class="content">
+          <div class="new-part-container">
+            <div class="eyes">
+              <div id="div1">
+                <div id="l" style="margin: 33px">
+                  <div class="pupil">
+                    <div class="p5">
+                      <div class="pupl2">
+                        <div class="pupil3"></div>
+                        <div class="pupil4"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="m" style="margin: 33px">
+                  <div class="pupil">
+                    <div class="p5">
+                      <div class="pupl2">
+                        <div class="pupil3"></div>
+                        <div class="pupil4"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="new-adde">
+              <div class="card-new">
+                <div class="infos">
+                  <div class="image"></div>
+                  <div class="info">
+                    <div>
+                      <p class="name">Yeni Eklenenler</p>
+                      <p class="function">Animasyon</p>
+                    </div>
+                    <div class="stats">
+                      <p class="new-page-text">
+                        Blockchain teknolojisi, yalnızca kripto paraların
+                        ötesinde geniş bir kullanım alanına sahiptir. Finans
+                        sektöründe hızlı, güvenilir ve düşük maliyetli
+                        uluslararası para transferleri yapılmasını sağlar.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <button class="request" type="button">Keşfet</button>
+              </div>
+            </div>
+          </div>
+          <div class="go-link"></div>
+        </div>
+      </div>
+    </section>
+    <section class="proposal" id="proposal-main">
+      <div class="container">
+        <div class="loader-progress">
+          <div id="first-progress">
+            <div id="second-progress">
+              <div id="third-progress"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proposal-contetn">
+          <div class="card-1 progres">
+            <div class="results-summary-container">
+              <div class="confetti">
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+                <div class="confetti-piece"></div>
+              </div>
+              <div class="results-summary-container__result">
+                <div class="heading-tertiary">Genel İlerleme Durumu</div>
+                <div class="result-box">
+                  <div class="heading-primary"></div>
+                  <p class="result">of 100</p>
+                </div>
+                <div class="result-text-box">
+                  <div class="heading-secondary">Harika</div>
+                </div>
+              </div>
+              <div class="results-summary-container__options">
+                <div class="heading-secondary heading-secondary--blue">
+                  Haftalık Sonuçlar
+                </div>
+                <div class="summary-result-options">
+                  <div class="result-option result-option-reaction">
+                    <div class="icon-box">
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.833 8.333V2.5l-6.666 9.167h5V17.5l6.666-9.167h-5Z"
+                          stroke-width="1.25"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          stroke="#F55"
+                        ></path>
+                      </svg>
+                      <span class="reaction-icon-text"
+                        >Animasyon İlerlemesi</span
+                      >
+                    </div>
+                    <div class="result-box"><span></span> / 100</div>
+                  </div>
+                  <div class="result-option result-option-memory">
+                    <div class="icon-box">
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.833 11.667a2.5 2.5 0 1 0 .834 4.858"
+                          stroke-width="1.25"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          stroke="#FFB21E"
+                        ></path>
+                        <path
+                          d="M3.553 13.004a3.333 3.333 0 0 1-.728-5.53m.025-.067a2.083 2.083 0 0 1 2.983-2.824m.199.054A2.083 2.083 0 1 1 10 3.75v12.917a1.667 1.667 0 0 1-3.333 0M10 5.833a2.5 2.5 0 0 0 2.5 2.5m1.667 3.334a2.5 2.5 0 1 1-.834 4.858"
+                          stroke-width="1.25"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          stroke="#FFB21E"
+                        ></path>
+                        <path
+                          d="M16.447 13.004a3.334 3.334 0 0 0 .728-5.53m-.025-.067a2.083 2.083 0 0 0-2.983-2.824M10 3.75a2.085 2.085 0 0 1 2.538-2.033 2.084 2.084 0 0 1 1.43 2.92m-.635 12.03a1.667 1.667 0 0 1-3.333 0"
+                          stroke-width="1.25"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          stroke="#FFB21E"
+                        ></path>
+                      </svg>
+                      <span class="memory-icon-text"
+                        >Test Tamamlama Durumu</span
+                      >
+                    </div>
+                    <div class="result-box"><span></span> / 100</div>
+                  </div>
+                  <div class="result-option result-option-verbal">
+                    <div class="icon-box">
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.5 10h5M10 18.333A8.333 8.333 0 1 0 1.667 10c0 1.518.406 2.942 1.115 4.167l-.699 3.75 3.75-.699A8.295 8.295 0 0 0 10 18.333Z"
+                          stroke-width="1.25"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          stroke="#00BB8F"
+                        ></path>
+                      </svg>
+                      <span class="verbal-icon-text"
+                        >Video İlerleme Durumu</span
+                      >
+                    </div>
+                    <div class="result-box"><span></span> / 100</div>
+                  </div>
+                  <div class="result-option result-option-Visual">
+                    <div class="icon-box">
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 11.667a1.667 1.667 0 1 0 0-3.334 1.667 1.667 0 0 0 0 3.334Z"
+                          stroke-width="1.25"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          stroke="#1125D6"
+                        ></path>
+                        <path
+                          d="M17.5 10c-1.574 2.492-4.402 5-7.5 5s-5.926-2.508-7.5-5C4.416 7.632 6.66 5 10 5s5.584 2.632 7.5 5Z"
+                          stroke-width="1.25"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          stroke="#1125D6"
+                        ></path>
+                      </svg>
+                      <span class="visual-icon-text">Haftalık Rapor</span>
+                    </div>
+                    <div class="result-box"><span></span> / 100</div>
+                  </div>
+                  <div class="summary__cta">
+                    <button class="btn-continue btn__continue">
+                      Sonuçları Görüntüle
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="" class="go-btn"></a>
+          </div>
+          <div class="card-2 last_complated_task"></div>
+          <div class="card-3 try yourself haftalık-raporlama"></div>
+        </div>
+
+        <div class="boxes-progress">
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer-suggestion-main">
+      <div class="osm-container">
+        <div class="content">
+          <h1 class="recommendations-title">Öneriler</h1>
+          <ul class="offer-list">
+            <li class="offer-1">
+              <div class="card-suggestion">
+                <div class="corner">
+                  <i data-corner="tl"></i>
+                  <i data-corner="br"></i>
+                  <div data-action="notif" class="action">
+                    <svg
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
+                      ></path>
+                      <path
+                        d="M16 8m-3 0a3 3 0 1 0 8 0a3 3 0 1 0 -8 0"
+                        class="dot"
+                        fill="red"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div data-action="more" class="action">
+                    <svg
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M17 7l-11 11"></path>
+                      <path d="M8 7l9 0l0 9"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                <figure class="boxes">
+                  <span class="img">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 61.7998 61.7998"
+                      height="800px"
+                      width="800px"
+                    >
+                      <g>
+                        <path
+                          fill="#4a90e2"
+                          d="M56.5 12H5.5C4.1 12 3 13.1 3 14.5v32.8C3 50.9 4.1 52 5.5 52h51c1.4 0 2.5-1.1 2.5-2.5V14.5c0-1.4-1.1-2.5-2.5-2.5zM25 38.5l-12-7.5 12-7.5v15z"
+                        />
+                        <path fill="#fff" d="M25 38.5l-12-7.5 12-7.5v15z" />
+                      </g>
+                    </svg>
+                  </span>
+                  <figcaption class="caption">
+                    <p class="name">Hash Yapısı</p>
+                    <span class="as" title="CEO of media Ink"
+                      >Hash Yapısının Temelleri</span
+                    >
+                  </figcaption>
+                </figure>
+
+                <div class="box-body">
+                  <div class="box-content">
+                    <span class="img">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 128 128"
+                        width="800px"
+                        height="800px"
+                      >
+                        <g fill="#4a90e2">
+                          <rect x="16" y="24" width="32" height="16" />
+                          <rect x="80" y="24" width="32" height="16" />
+                          <rect x="16" y="56" width="32" height="16" />
+                          <rect x="80" y="56" width="32" height="16" />
+                          <rect x="16" y="88" width="32" height="16" />
+                          <rect x="80" y="88" width="32" height="16" />
+                          <line
+                            x1="16"
+                            y1="24"
+                            x2="48"
+                            y2="56"
+                            stroke="#000"
+                            stroke-width="4"
+                          />
+                          <line
+                            x1="80"
+                            y1="24"
+                            x2="112"
+                            y2="56"
+                            stroke="#000"
+                            stroke-width="4"
+                          />
+                          <line
+                            x1="16"
+                            y1="56"
+                            x2="48"
+                            y2="88"
+                            stroke="#000"
+                            stroke-width="4"
+                          />
+                          <line
+                            x1="80"
+                            y1="56"
+                            x2="112"
+                            y2="88"
+                            stroke="#000"
+                            stroke-width="4"
+                          />
+                        </g>
+                      </svg>
+                    </span>
+                    <div class="caption">
+                      <p>
+                        Hash fonksiyonları, veri bütünlüğünü sağlamak için
+                        kritik öneme sahiptir. Bu video, hash yapısının ne
+                        olduğunu, nasıl çalıştığını ve blockchain
+                        uygulamalarındaki rolünü detaylı bir şekilde
+                        açıklamaktadır.
+                      </p>
+                      <div>
+                        <p class="text-sm">
+                          <time class="font-semibold">28 03 2024</time> at
+                          <time class="font-semibold">2 pm</time>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div data-title="Videoya Git" class="box-foot">
+                  <figure class="box-foot-figure">
+                    <figcaption class="font-medium">izle</figcaption>
+                    <button type="button">
+                      <svg
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        height="18"
+                        width="18"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M17 7l-10 10"></path>
+                        <path d="M8 7l9 0l0 9"></path>
+                      </svg>
+                    </button>
+                  </figure>
+                  <div class="box-foot-actions">
+                    <button
+                      type="button"
+                      aria-label="email"
+                      class="box-foot-action"
+                    ></button>
+                    <button
+                      type="button"
+                      aria-label="meets"
+                      class="box-foot-action"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+
+              <a href="" class="go-btn"></a>
+            </li>
+          </ul>
+          <div class="loader"></div>
+        </div>
+      </div>
+    </section>
+    <section class="home-contact-main">
+      <div class="contact-container">
+        <div class="content"></div>
+      </div>
+    </section>
+    <footer class="home-footer">
+      <div class="cotainer">
+        <div class="main">
+          <div class="up">
+            <button class="card1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0,0,256,256"
+                width="30px"
+                height="30px"
+                fill-rule="nonzero"
+                class="instagram"
+              >
+                <g
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(8,8)">
+                    <path
+                      d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <button class="card2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                width="30px"
+                height="30px"
+                class="twitter"
+              >
+                <path
+                  d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="down">
+            <button class="card3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 30 30"
+                width="30px"
+                height="30px"
+                class="github"
+              >
+                <path
+                  d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"
+                ></path>
+              </svg>
+            </button>
+            <button class="card4">
+              <svg
+                height="30px"
+                width="30px"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+                class="discord"
+              >
+                <path
+                  d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="content">
+          <div class="logo-bilgisi"></div>
+          <ul class="footer-link-list">
+            <li><a href="hakkimizda.html" class="hakkimda">Hakkımızda</a></li>
+            <li><a href="iletisim.html" class="iletişim">İletişim</a></li>
+            <li><a href="forum.html" class="Forum">Forum</a></li>
+            <li>
+              <a href="gizlilik-politikasi.html" class="gizlilik-politikası"
+                >Gizlilik Politikası</a
+              >
+            </li>
+            <li>
+              <a href="kullanım-sartlari.html" class="kullanım şartları"
+                >Kullanım Şartları</a
+              >
+            </li>
+          </ul>
+          <div class="footer-paragraf telif-hakkı">
+            &copy; 2024 Örnek Şirket. Tüm hakları saklıdır.
+          </div>
+          <div class="cerezyasasi">
+            <span class="paragraf">Bu web sitesi çerezler kullanmaktadır.</span>
+            <a href="cerez-politikasi.html" class="cerez-link"
+              >Çerez Politikası</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/fontawesome.min.js"
+      integrity="sha512-NeFv3hB6XGV+0y96NVxoWIkhrs1eC3KXBJ9OJiTFktvbzJ/0Kk7Rmm9hJ2/c2wJjy6wG0a0lIgehHjCTDLRwWw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module">
+      import { db } from "../firebase-init.js";
+      import {
+        collection,
+        getDocs,
+        query,
+        orderBy,
+        limit,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      const $ = (s) => document.querySelector(s);
+      const tsToMillis = (t) => t?.toMillis?.() || 0;
+
+      const LINKS = {
+        video: (id) => `../videoo/index.html?id=${encodeURIComponent(id)}`,
+        anim: (id) => `../animasyonn/index.html?id=${encodeURIComponent(id)}`,
+      };
+
+      function updateNewAddedCard({ kind, title, text, href }) {
+        const nameEl = $(".new-adde .card-new .name");
+        const funcEl = $(".new-adde .card-new .function");
+        const pEl = $(".new-adde .card-new .new-page-text");
+        const btn = $(".new-adde .card-new .request");
+        if (!nameEl || !funcEl || !pEl || !btn) {
+          console.warn("[home] kart seçicileri bulunamadı.");
+          return;
+        }
+        nameEl.textContent = title || "Yeni Eklenen";
+        funcEl.textContent = kind || "Video";
+        pEl.textContent = text || "Son eklenen içeriklerimizi keşfedin!";
+        btn.onclick = () => (location.href = href || "#");
+      }
+
+      function fillGoLinks(items) {
+        const go = document.querySelector(".go-link");
+        if (!go) return;
+        go.innerHTML = "";
+        items.slice(0, 3).forEach((x) => {
+          const a = document.createElement("a");
+          a.className = "go-btn";
+          a.textContent = `${x._type === "video" ? "🎬" : "🎞️"} ${x.title}`;
+          a.href = x.href || "#";
+          go.appendChild(a);
+        });
+      }
+
+      async function getLatest(collectionName, n, _type) {
+        const qy = query(
+          collection(db, collectionName),
+          orderBy("createdAt", "desc"),
+          limit(n)
+        );
+        const snap = await getDocs(qy);
+        return snap.docs.map((d) => ({ id: d.id, ...d.data(), _type }));
+      }
+
+      async function renderNewAdded() {
+        try {
+          const [videos, anims] = await Promise.all([
+            getLatest("catalogVideos", 3, "video"),
+            getLatest("catalogAnimations", 3, "anim"),
+          ]);
+
+          const merged = [...videos, ...anims].sort(
+            (a, b) => tsToMillis(b.createdAt) - tsToMillis(a.createdAt)
+          );
+
+          if (!merged.length) {
+            updateNewAddedCard({
+              kind: "—",
+              title: "Şimdilik içerik yok",
+              text: "Katalog boş görünüyor. Panelden içerik ekleyince burada belirecek.",
+              href: "#",
+            });
+            fillGoLinks([]);
+            return;
+          }
+
+          const top = merged[0];
+          updateNewAddedCard({
+            kind: top._type === "video" ? "Video" : "Animasyon",
+            title:
+              top.title ||
+              (top._type === "video" ? "Yeni Video" : "Yeni Animasyon"),
+            text:
+              top.description ||
+              top.seoDescription ||
+              "Son eklenen içeriklerimizi keşfedin!",
+            href:
+              top._type === "video" ? LINKS.video(top.id) : LINKS.anim(top.id),
+          });
+
+          fillGoLinks(
+            merged.slice(0, 3).map((x) => ({
+              _type: x._type,
+              title: x.title || x.id,
+              href: x._type === "video" ? LINKS.video(x.id) : LINKS.anim(x.id),
+            }))
+          );
+        } catch (err) {
+          console.error("[home] renderNewAdded error:", err);
+          const b = document.createElement("div");
+          b.style.cssText =
+            "position:sticky;top:0;background:#ffe5e5;color:#800;padding:8px;border:1px solid #f99;z-index:9999";
+          b.innerHTML = String(err).includes(
+            "Missing or insufficient permissions"
+          )
+            ? `Firestore Rules: <code>catalogVideos</code> ve <code>catalogAnimations</code> koleksiyonlarına <b>read</b> izni ver.`
+            : `Yeni eklenenleri yüklerken bir hata oluştu. Konsolu kontrol et.`;
+          document.body.prepend(b);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", renderNewAdded);
+    </script>
+
+    <script type="module" src="/home/home.js"></script>
+    <script type="module" src="/home/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain'de Akıllı Sözleşmeler - Eğitim</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header"></div>
+
+      <div class="main-card">
+        <div class="card-header">
+          <div class="title-section">
+            <h2 id="scene-title">Sahne 1: Giriş: "Kurallı Kutu" Benzetmesi</h2>
+            <span class="badge" id="scene-badge">1 / 5</span>
+          </div>
+          <div class="controls">
+            <button id="play-btn" class="btn btn-play">▶️ Başlat</button>
+            <button id="reset-btn" class="btn btn-reset">🔄 Tekrar</button>
+          </div>
+        </div>
+
+        <div class="animation-container" id="animation-container"></div>
+      </div>
+
+      <div class="navigation">
+        <button id="prev-btn" class="btn btn-nav">◀️ Önceki Sahne</button>
+
+        <div class="scene-indicators" id="scene-indicators"></div>
+
+        <button id="next-btn" class="btn btn-nav">Sonraki Sahne ▶️</button>
+      </div>
+
+      <div class="footer">
+        <p>
+          Her sahneyi izledikten sonra "Başlat" butonuna tıklayarak animasyonu
+          başlatabilirsiniz.
+        </p>
+      </div>
+    </div>
+
+    <div id="info-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modal-title">Sahne Bilgileri</h3>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="info-section">
+            <p id="modal-content"></p>
+          </div>
+          <div class="info-section key-point">
+            <h4>🔑 Anahtar Nokta:</h4>
+            <p id="modal-key-point"></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="start-animation-btn" class="btn btn-primary">
+            🎬 Animasyona Geç
+          </button>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "Akillisozlesme", 100);
+
+            window.location.href = "../../../testler/akıllısözleşme/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "akilli-sözlesme";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "akilli-sozlesme",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "akilli-sozlesme" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

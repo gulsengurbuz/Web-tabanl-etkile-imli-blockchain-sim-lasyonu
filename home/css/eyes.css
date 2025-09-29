@@ -1,0 +1,92 @@
+#div1 {
+  width: 100%;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes animateHeight {
+  0% {
+    height: 0px;
+  }
+  50% {
+    height: 50px;
+  }
+}
+
+#l,
+#m {
+  width: 150px;
+  height: 75px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(0, 191, 255);
+  border-radius: 0px 200px 0px 200px;
+  -moz-border-radius: 0px 200px 0px 200px;
+  -webkit-border-radius: 0px 200px 0px 200px;
+  border: 1px solid transparent;
+  animation: animateHeight 1s infinite alternate-reverse;
+}
+#m {
+  border-radius: 200px 0px 200px 0px;
+  -moz-border-radius: 200px 0px 200px 0px;
+  -webkit-border-radius: 200px 0px 200px 0px;
+}
+.pupil,
+.pupl2,
+.pupil3,
+.pupil4,
+.p5 {
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.297);
+}
+.pupil3,
+.pupil4 {
+  width: 18px;
+  height: 3.5px;
+  overflow: visible;
+}
+
+.pupil {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    rgb(190, 111, 255),
+    rgb(60, 172, 247),
+    rgb(197, 197, 252),
+    rgb(0, 0, 0)
+  );
+}
+.pupl2 {
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(
+    rgb(196, 2, 255),
+    rgb(0, 200, 255),
+    rgb(40, 40, 248),
+    rgb(0, 0, 0)
+  );
+}
+.p5 {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(
+    rgb(195, 71, 252),
+    rgb(1, 255, 255),
+    rgb(63, 63, 254),
+    rgb(188, 188, 188)
+  );
+}
+.pupil3 {
+  width: 5px;
+  height: 18px;
+}

@@ -1,0 +1,163 @@
+
+
+:root {
+  --rv-ok: #166534;
+  --rv-ok-bg: #e8f8ef;
+  --rv-fail: #9f1239;
+  --rv-fail-bg: #ffecec;
+  --rv-border: #e2e8f0;
+  --rv-text: #334155;
+  --rv-subtext: #475569;
+  --rv-pill-bg: #0055ff;
+  --rv-pill-text: #111827;
+  --rv-wrong-bg: #fee2e2;
+  --rv-wrong-text: #991b1b;
+  --rv-correct-bg: #f0fdf4;
+  --rv-correct-border: #bbf7d0;
+  --rv-user-bg: #fff7ed;
+  --rv-user-border: #fed7aa;
+  --rv-primary: #1d4ed8;
+}
+
+
+
+
+.review-wrap {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+}
+.review-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.review-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.review-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--rv-subtext);
+}
+.badge {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+.badge.ok {
+  background: var(--rv-ok-bg);
+  color: var(--rv-ok);
+}
+.badge.fail {
+  background: var(--rv-fail-bg);
+  color: var(--rv-fail);
+}
+.score {
+  font-weight: 600;
+}
+.only-wrong {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.review-list {
+  display: grid;
+  gap: 12px;
+}
+.card {
+  border: 1px solid var(--rv-border);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+}
+.card.ok {
+  border-color: #d1fae5;
+}
+.card.wrong {
+  border-color: #ffe4e6;
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--rv-subtext);
+  margin-bottom: 6px;
+}
+.q-text {
+  font-size: 1rem;
+  margin: 6px 0 8px;
+  color: var(--rv-text);
+}
+
+.options {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border: 1px dashed var(--rv-border);
+  border-radius: 8px;
+}
+.opt.correct {
+  background: var(--rv-correct-bg);
+  border-color: var(--rv-correct-border);
+}
+.opt.user:not(.correct) {
+  background: var(--rv-user-bg);
+  border-color: var(--rv-user-border);
+}
+.opt-key {
+  font-weight: 700;
+  width: 24px;
+  text-align: center;
+  color: var(--rv-text);
+}
+.opt-badge {
+  margin-left: auto;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--rv-pill-bg);
+  color: var(--rv-pill-text);
+}
+.opt-badge.wrong {
+  background: var(--rv-wrong-bg);
+  color: var(--rv-wrong-text);
+}
+.why {
+  margin: 8px 0 0;
+  color: var(--rv-text);
+  font-size: 0.95rem;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+.btn-primary {
+  background: var(--rv-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  filter: brightness(0.95);
+}

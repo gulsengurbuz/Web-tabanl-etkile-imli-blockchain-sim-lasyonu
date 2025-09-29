@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Çoklu İmza Animasyonu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-icon" id="modal-icon">📄</div>
+          <h2 id="modal-title">İşlem Oluşturma</h2>
+          <p id="modal-text">
+            Ali, 5 BTC'yi bir proje hesabına göndermek istiyor. Ancak işlem
+            yalnızca tüm tarafların onayıyla gerçekleşebilir.
+          </p>
+        </div>
+
+        <div class="modal-buttons">
+          <button id="continue-btn" class="continue-btn">Devam Et</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="scene-progress-container">
+        <div class="scene-progress-bar">
+          <div class="scene-progress-fill" id="scene-progress-fill"></div>
+        </div>
+        <span class="scene-progress-text" id="scene-progress-text">1 / 5</span>
+      </div>
+
+      <div class="scene-nav-buttons">
+        <button
+          id="scene-prev-btn"
+          class="scene-nav-btn scene-prev-btn"
+          disabled
+        >
+          <span>←</span>
+        </button>
+        <button id="scene-next-btn" class="scene-nav-btn scene-next-btn">
+          <span>→</span>
+        </button>
+      </div>
+
+      <div class="animation-area">
+        <div id="transaction-card" class="transaction-card hidden">
+          <p id="transaction-text">Ali → 5 BTC → Proje</p>
+        </div>
+
+        <div id="approved-label" class="approved-label hidden">Onaylandı ✓</div>
+
+        <div id="signature-slots" class="signature-slots hidden">
+          <div class="signature-slot" data-signer="ali">
+            <div class="signer-avatar ali">A</div>
+            <p class="signer-name">Ali</p>
+            <div class="signature-stamp ali-stamp hidden">✓</div>
+            <span class="waiting-text hidden">Bekliyor...</span>
+          </div>
+          <div class="signature-slot" data-signer="ayse">
+            <div class="signer-avatar ayse">A</div>
+            <p class="signer-name">Ayşe</p>
+            <div class="signature-stamp ayse-stamp hidden">✓</div>
+            <span class="waiting-text hidden">Bekliyor...</span>
+          </div>
+          <div class="signature-slot" data-signer="mehmet">
+            <div class="signer-avatar mehmet">M</div>
+            <p class="signer-name">Mehmet</p>
+            <div class="signature-stamp mehmet-stamp hidden">✓</div>
+            <span class="waiting-text hidden">Bekliyor...</span>
+          </div>
+          <div class="signature-slot" data-signer="elif">
+            <div class="signer-avatar elif">E</div>
+            <p class="signer-name">Elif</p>
+            <div class="signature-stamp elif-stamp hidden">✓</div>
+            <span class="waiting-text hidden">Bekliyor...</span>
+          </div>
+          <div class="signature-slot" data-signer="hasan">
+            <div class="signer-avatar hasan">H</div>
+            <p class="signer-name">Hasan</p>
+            <div class="signature-stamp hasan-stamp hidden">✓</div>
+            <span class="waiting-text hidden">Bekliyor...</span>
+          </div>
+        </div>
+
+        <div id="blockchain-line" class="blockchain-line hidden">
+          <div class="blockchain-block" data-block="0"></div>
+          <div class="blockchain-connector"></div>
+          <div class="blockchain-block" data-block="1"></div>
+          <div class="blockchain-connector"></div>
+          <div class="blockchain-block" data-block="2"></div>
+          <div class="blockchain-connector"></div>
+          <div class="blockchain-block" data-block="3"></div>
+          <div class="blockchain-connector"></div>
+          <div class="blockchain-block target-block" data-block="4">
+            <span class="block-text hidden">Blok</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "dijital-imza", 100);
+
+            window.location.href = "../../../testler/dijitalimza/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "dijital-imza";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "dijital-imza",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "dijital-imza" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

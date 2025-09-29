@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merkeziyetsiz Ağ Simülasyonu</title>
+    <link rel="stylesheet" href="merkeziyetsiz.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="header">
+        <div class="header-content">
+          <h1 class="title">Merkeziyetsiz Ağ</h1>
+          <p class="subtitle">Dağıtık sistem mimarisi</p>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="network-container">
+          <svg id="connections-svg" class="connections-svg"></svg>
+
+          <div id="center-A" class="network-node center-node">
+            <div class="node-header">
+              <h3 class="node-title">Merkez A</h3>
+              <div class="status-indicator"></div>
+            </div>
+            <div class="error-badge">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+
+            <div class="devices-container">
+              <div id="phone-A1" class="device-node" data-device="phone">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="5"
+                      y="2"
+                      width="14"
+                      height="20"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
+                </div>
+              </div>
+
+              <div id="laptop-A1" class="device-node" data-device="laptop">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div id="tablet-A1" class="device-node" data-device="tablet">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="4"
+                      y="2"
+                      width="16"
+                      height="20"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="center-B" class="network-node center-node">
+            <div class="node-header">
+              <h3 class="node-title">Merkez B</h3>
+              <div class="status-indicator"></div>
+            </div>
+            <div class="error-badge">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+
+            <div class="devices-container">
+              <div id="desktop-B1" class="device-node" data-device="desktop">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="2"
+                      y="3"
+                      width="20"
+                      height="14"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+              </div>
+
+              <div id="watch-B1" class="device-node" data-device="watch">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="7"></circle>
+                    <polyline points="12 9 12 12 13.5 13.5"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="center-C" class="network-node center-node">
+            <div class="node-header">
+              <h3 class="node-title">Merkez C</h3>
+              <div class="status-indicator"></div>
+            </div>
+            <div class="error-badge">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+
+            <div class="devices-container">
+              <div id="phone-C1" class="device-node" data-device="phone">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="5"
+                      y="2"
+                      width="14"
+                      height="20"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
+                </div>
+              </div>
+
+              <div id="laptop-C1" class="device-node" data-device="laptop">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-panel">
+          <button id="start-simulation" class="control-button primary">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Başlat
+          </button>
+          <button id="reset-simulation" class="control-button secondary">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            Sıfırla
+          </button>
+        </div>
+      </main>
+
+      <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+          <div class="modal-header">
+            <h2 id="modal-title" class="modal-title"></h2>
+            <div class="scene-indicator">
+              <span id="scene-counter">1</span>/<span id="total-scenes">4</span>
+            </div>
+          </div>
+          <div id="modal-content" class="modal-content"></div>
+          <div class="modal-actions">
+            <button id="modal-button" class="modal-button">
+              Devam
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "merkeziyetsiz", 100);
+            window.location.href = "../../../testler/Merkeziyetsiz/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "merkeziyetsiz";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "merkeziyetsiz",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "merkeziyetsiz" });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+
+    <script src="merkeziyetsiz.js"></script>
+  </body>
+</html>

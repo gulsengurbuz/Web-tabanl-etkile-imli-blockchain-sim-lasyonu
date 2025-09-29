@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain'de Simetrik Şifreleme Animasyonu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="animation-wrapper">
+        <!-- Background and Blockchain Line -->
+        <div class="background" id="background"></div>
+        <div class="blockchain-line" id="blockchainLine">
+          <div class="blockchain-blocks"></div>
+        </div>
+
+        <!-- Nodes -->
+        <div class="node node-ali">
+          <div class="node-label">Node Ali</div>
+          <div class="node-box">Ali</div>
+        </div>
+        <div class="node node-zeynep">
+          <div class="node-label">Node Zeynep</div>
+          <div class="node-box">Zeynep</div>
+        </div>
+
+        <!-- Data Block -->
+        <div class="data-block" id="dataBlock">
+          <div class="data-label" id="dataLabel">Açık Veri</div>
+          <div class="data-content" id="dataContent">Ali → 5 BTC → Zeynep</div>
+          <div class="block-number">Block #102</div>
+        </div>
+
+        <!-- Key -->
+        <div class="key" id="key">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"
+            />
+            <path d="m21 2-9.6 9.6" />
+            <circle cx="7.5" cy="15.5" r="5.5" />
+          </svg>
+        </div>
+
+        <!-- Evil Node -->
+        <div class="evil-node" id="evilNode">
+          <div class="evil-node-label">Kötü Node</div>
+          <div class="evil-node-box">Hacker</div>
+        </div>
+
+        <!-- Secure Tunnel -->
+        <div class="secure-tunnel" id="secureTunnel">
+          <div class="tunnel-locks">
+            <svg
+              class="lock-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="m7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <svg
+              class="lock-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="m7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <svg
+              class="lock-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="m7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <svg
+              class="lock-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="m7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <svg
+              class="lock-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="m7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Evil Access Attempt -->
+        <div class="evil-attempt" id="evilAttempt">
+          <div class="access-arrow" id="accessArrow"></div>
+          <div class="access-cross" id="accessCross">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="m15 9-6 6" />
+              <path d="m9 9 6 6" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Access Denied Modal -->
+        <div class="access-denied-modal" id="accessDeniedModal">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="m15 9-6 6" />
+            <path d="m9 9 6 6" />
+          </svg>
+          <span class="modal-title">Erişim Reddedildi</span>
+          <span class="modal-subtitle">Anahtar yok!</span>
+        </div>
+
+        <!-- Narrator Text -->
+        <div class="narrator" id="narrator">
+          Ali, Zeynep'e göndermek istediği '5 BTC'lik' bir işlemi var. Bu işlem
+          şu an herkes tarafından okunabilir durumda, yani 'açık veri' olarak
+          duruyor. Blockchain'e eklemeden önce bu bilginin gizliliğini sağlamak
+          için şifrelemek istiyor.
+        </div>
+
+        <!-- Final Message -->
+        <div class="final-message" id="finalMessage">
+          <p class="final-title">Simetrik Şifreleme</p>
+          <p class="final-text">
+            Bu animasyon, simetrik şifrelemenin temelini ve anahtar yönetiminin
+            kritik önemini vurgulamaktadır. Aynı anahtarın hem şifreleme hem de
+            çözme için kullanıldığı bu sistemde, anahtarın güvenliği tüm
+            gizliliğin anahtarıdır. Eğer anahtar ele geçirilirse, şifrelenmiş
+            verinin gizliliği de ortadan kalkar.
+          </p>
+        </div>
+
+        <!-- Continue Button -->
+        <button class="continue-btn" id="continueBtn">Devam Et</button>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js"; // yol: kökten
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "simetrik", 100); // id=1, %100 tamam
+            // Bitince test sayfasına gönder:
+            window.location.href = "../../../testler/hash/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "simetrik";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "acik-blockchain",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "acik-blockchain" });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

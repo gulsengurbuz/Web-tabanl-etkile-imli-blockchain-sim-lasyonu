@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konsorsiyum Blockchain Ağı</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🏢 KONSORSİYUM BLOCKCHAIN AĞI</h1>
+        <p>Şirketler Arası Ortaklık Blockchain Ağı</p>
+      </div>
+
+      <div id="companies-section" class="companies-section hidden">
+        <div id="companies-grid" class="companies-grid">
+          <div class="company-card" data-company="A">
+            <div class="company-icon company-a">A</div>
+            <h3>Firma A</h3>
+          </div>
+          <div class="company-card" data-company="B">
+            <div class="company-icon company-b">B</div>
+            <h3>Firma B</h3>
+          </div>
+          <div class="company-card" data-company="C">
+            <div class="company-icon company-c">C</div>
+            <h3>Firma C</h3>
+          </div>
+          <div class="company-card" data-company="D">
+            <div class="company-icon company-d">D</div>
+            <h3>Firma D</h3>
+          </div>
+        </div>
+        <div id="consortium-formed" class="consortium-status hidden">
+          <div class="status-badge success">
+            ✅ Ortak Konsorsiyum Oluşturuldu
+          </div>
+        </div>
+      </div>
+
+      <div id="blockchain-section" class="blockchain-section hidden">
+        <h2>Ortak Blockchain</h2>
+        <div id="blockchain-container" class="blockchain-container"></div>
+      </div>
+
+      <div id="peers-section" class="peers-section hidden">
+        <h2>Konsorsiyum Üyeleri ve Node Atamaları</h2>
+        <div id="peers-grid" class="peers-grid"></div>
+        <div id="voting-status" class="voting-status hidden">
+          <div class="status-badge warning">
+            🌐 Ağ Doğrulama Süreci - Blok konsorsiyum tarafından oylanıyor...
+          </div>
+        </div>
+        <div id="voting-result" class="voting-result hidden"></div>
+      </div>
+
+      <div id="start-section" class="start-section">
+        <button id="start-btn" class="start-button">Animasyonu Başlat</button>
+      </div>
+
+      <div id="modal" class="modal hidden">
+        <div class="modal-content">
+          <h3 id="modal-title"></h3>
+          <div id="modal-body"></div>
+          <button id="modal-action" class="modal-button"></button>
+        </div>
+      </div>
+    </div>
+
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "konsorsiyum-blockchain", 100);
+            window.location.href = "../../../testler/konsörsiyum/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "konsorsiyum-blockchain";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "konsorsiyum-blockchain",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "konsorsiyum-blockchain" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

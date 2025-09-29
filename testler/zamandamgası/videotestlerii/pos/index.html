@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="docTitle">Mini Quiz</title>
+    <link rel="stylesheet" href="../_shared/quiz.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="topbar">
+        <div class="brand">BlockchainEdu</div>
+        <div class="top-actions">
+          <a class="link" href="../../videoo/index.html">← Videolara dön</a>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-head">
+          <div>
+            <div class="quiz-badge" id="quizBadge">Mini Quiz</div>
+            <h1 id="quizTitle" style="margin:6px 0 2px">Konu</h1>
+            <div class="pill" id="quizCount">0 soru</div>
+          </div>
+        </div>
+
+        <div class="progress"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+
+        <form class="quiz" id="quizForm" onsubmit="return false;">
+          <div id="qWrap"></div>
+
+          <div class="quiz-actions">
+            <button id="btnPrev" class="btn" type="button">Önceki</button>
+            <button id="btnNext" class="btn" type="button">Sonraki</button>
+            <button id="btnSubmit" class="btn btn-primary" type="button">Gönder</button>
+          </div>
+        </form>
+
+        <div class="review" id="review"></div>
+
+        <div class="bottombar">
+          <div id="result">Cevapları işaretleyip “Gönder”e bas.</div>
+          <a class="link" href="../../videoo/index.html">Videolara dön</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { initQuiz } from "../_shared/quiz.js";
+      import { QUIZ_INDEX } from "../_shared/questions.js";
+
+      const QUIZ_SLUG = "pos";
+      const QUIZ_VIDEO_ID = 17;
+
+      const meta = QUIZ_INDEX.find(x => x.slug === QUIZ_SLUG);
+      if (meta) document.title = meta.title + " | Mini Quiz";
+
+      initQuiz({ slug: QUIZ_SLUG, videoId: QUIZ_VIDEO_ID });
+    </script>
+  </body>
+</html>

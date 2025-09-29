@@ -1,0 +1,20 @@
+.proposal .container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.loader-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.boxes-progress {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

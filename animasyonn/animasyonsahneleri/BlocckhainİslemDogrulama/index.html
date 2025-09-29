@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain İşlem Doğrulama Eğitimi</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="kidval-app">
+      <div class="container">
+        Header
+        <div class="header">
+          <h1>Blockchain İşlem Doğrulama Eğitimi</h1>
+          <p class="scene-counter">
+            Sahne <span id="current-scene">1</span> /
+            <span id="total-scenes">12</span>
+          </p>
+        </div>
+
+        Main Content
+        <div class="kidval-main-card">
+          Top Panel - Description
+          <div class="kidval-description-panel">
+            <h2 id="scene-title">İşlem Kutusu: İçinde Ne Var?</h2>
+            <p id="scene-description">
+              Bir işlem, düzenli bir kutu gibidir: Sürüm, Girişler, Çıkışlar ve
+              Zaman alanları birlikte çalışır. Girişler, eski paraları (UTXO)
+              işaret eder; çıkışlar, paranın yeni adreslere gidişini anlatır.
+              Zaman, 'ne zaman' geçerli olacağını söyler. Bu parçalar doğru
+              biçimde yerleştiğinde ağ işlemi kolayca anlar.
+            </p>
+          </div>
+
+          Bottom Panel - Animation Canvas
+          <div class="kidval-animation-panel">
+            <div class="animation-container">
+              <canvas id="animation-canvas" width="700" height="500"></canvas>
+
+              Animation Content
+              <div id="scene-content" class="scene-content">
+                Scene animations will be rendered here
+              </div>
+            </div>
+
+            Progress Bar
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+              </div>
+              <div class="progress-time">
+                <span id="current-time">0s</span>
+                <span id="total-time">36s</span>
+              </div>
+            </div>
+          </div>
+
+          Controls
+          <div class="controls">
+            <div class="nav-controls">
+              <button id="prev-btn" class="btn btn-outline">
+                <span class="icon">‹</span>
+                Önceki
+              </button>
+              <button id="next-btn" class="btn btn-outline">
+                Sonraki
+                <span class="icon">›</span>
+              </button>
+            </div>
+
+            <div class="playback-controls">
+              <button id="sound-btn" class="btn btn-outline">
+                <span class="icon">🔊</span>
+              </button>
+              <button id="reset-btn" class="btn btn-outline">
+                <span class="icon">↻</span>
+              </button>
+              <button id="play-btn" class="btn btn-primary">
+                <span class="icon">▶</span>
+                <span class="text">Oynat</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        Scene Navigation
+        <div class="scene-navigation">
+          <h3>Tüm Sahneler</h3>
+          <div id="scene-grid" class="scene-grid">
+            Scene buttons will be generated here
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "islem-ve-blok-dogrulama", 100);
+
+            window.location.href =
+              "../../../testler/BlockchainİslemDogrulama/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+    <script src="../../../testler/asimetrik/index.html"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "anahtar-yonetimi";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "islem-ve-blok-dogrulama",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "islem-ve-blok-dogrulama" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

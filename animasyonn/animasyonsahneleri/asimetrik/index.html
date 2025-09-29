@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Çift Anahtarın Sırrı - Asimetrik Şifreleme Animasyonu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="animation-wrapper">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="stage-indicators" id="stageIndicators">
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+          <div class="indicator"></div>
+        </div>
+
+        <div class="controls">
+          <button id="prevBtn" class="control-btn" title="Önceki">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button id="playPauseBtn" class="control-btn" title="Oynat/Duraklat">
+            <i class="fas fa-play"></i>
+          </button>
+          <button id="nextBtn" class="control-btn" title="Sonraki">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <div class="mode-selector">
+            <button id="modeBtn" class="control-btn" title="Anlatım Modu">
+              <i class="fas fa-cog"></i>
+            </button>
+            <div class="mode-dropdown" id="modeDropdown">
+              <div class="mode-title">Anlatım Modu:</div>
+              <button class="mode-option active" data-mode="detailed">
+                Detaylı Anlatım
+              </button>
+              <button class="mode-option" data-mode="simple">
+                Basit Anlatım
+              </button>
+              <button class="mode-option" data-mode="technical">
+                Teknik Anlatım
+              </button>
+              <button class="mode-option" data-mode="visual">
+                Görsel Anlatım
+              </button>
+            </div>
+          </div>
+          <button class="control-btn" title="Anlatıcı">
+            <i class="fas fa-volume-up"></i>
+          </button>
+          <button class="control-btn" title="İpucu">
+            <i class="fas fa-info"></i>
+          </button>
+        </div>
+
+        <div class="current-mode" id="currentMode">Detaylı Anlatım</div>
+
+        <div class="narrator" id="narrator">
+          <p id="narratorText"></p>
+        </div>
+
+        <div class="node sender" id="aliNode">
+          <div class="node-circle">Ali</div>
+          <span class="node-label">Gönderici</span>
+        </div>
+
+        <div class="node receiver" id="zeynepNode">
+          <div class="node-circle">Zeynep</div>
+          <span class="node-label">Alıcı</span>
+        </div>
+
+        <div class="blockchain-line">
+          <div class="blockchain-dot"></div>
+          <div class="blockchain-dot"></div>
+          <div class="blockchain-dot"></div>
+          <div class="blockchain-dot"></div>
+          <div class="blockchain-dot"></div>
+          <div class="blockchain-dot"></div>
+          <div class="blockchain-dot"></div>
+          <div class="blockchain-dot"></div>
+        </div>
+
+        <div class="keys-container" id="keysContainer">
+          <div class="key-item">
+            <i class="fas fa-key public-key"></i>
+            <span class="key-label public-label">Genel</span>
+          </div>
+          <div class="key-item">
+            <i class="fas fa-key private-key"></i>
+            <span class="key-label private-label">Özel</span>
+          </div>
+        </div>
+
+        <div class="message-box" id="messageBox">
+          <span class="message-label" id="messageLabel">Açık Veri</span>
+          <span class="message-content" id="messageContent"
+            >Merhaba Zeynep</span
+          >
+        </div>
+
+        <div class="moving-key" id="aliKey">
+          <i class="fas fa-key public-key"></i>
+        </div>
+
+        <div class="bad-node" id="badNode">
+          <div class="bad-node-circle">Kötü</div>
+          <div class="access-denied" id="accessDenied">Erişim Reddedildi</div>
+          <div class="bad-key">
+            <i class="fas fa-key public-key"></i>
+          </div>
+        </div>
+
+        <div class="moving-key" id="zeynepKey">
+          <i class="fas fa-key private-key"></i>
+        </div>
+
+        <div class="summary-container" id="summaryContainer">
+          <div class="summary-box">
+            <h3>Şifreleme</h3>
+            <div class="summary-item">
+              <i class="fas fa-lock"></i>
+              <span>Genel kilitler</span>
+            </div>
+            <div class="summary-item">
+              <i class="fas fa-unlock"></i>
+              <span>Özel açar</span>
+            </div>
+          </div>
+          <div class="summary-box">
+            <h3>Güvenlik</h3>
+            <p>Genel paylaşılabilir</p>
+            <p class="security-warning">Özel gizli kalır</p>
+          </div>
+        </div>
+
+        <div class="final-summary" id="finalSummary">
+          <p id="finalText">
+            Asimetrik şifreleme: Genel anahtar kilitler, özel anahtar açar.
+            Güvenli iletişim için anahtar çiftleri kullanılır.
+          </p>
+        </div>
+
+        <div class="caption" id="caption">
+          <span id="captionText"></span>
+          <button id="restartBtn" class="restart-btn">Tekrar izle</button>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "ozel-blockchain", 100);
+
+            window.location.href = "../../../testler/asimetrik/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+    <script src="../../../testler/asimetrik/index.html"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "ozel-blockchain";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "ozel-blockchain",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "ozel-blockchain" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

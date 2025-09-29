@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coin vs Token - Eğitici Animasyon</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div id="animation-container">
+      <div class="header-bar">
+        <h1>Coin vs Token</h1>
+      </div>
+
+      <div class="caption-box" id="caption-box">
+        <h2 id="scene-title">Açılış</h2>
+        <p id="scene-caption">
+          Blockchain'de iki tür dijital değer vardır: Coin ve Token.
+        </p>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="wallet" id="walletMain">
+          <div class="wallet-body"></div>
+          <div class="wallet-coins" id="wallet-contents"></div>
+        </div>
+
+        <div class="coin-shape" id="coinShape">
+          <div class="coin-inner"></div>
+          <span class="label">Coin</span>
+        </div>
+
+        <div class="token-shape" id="tokenShape">
+          <div class="token-inner"></div>
+          <span class="label">Token</span>
+        </div>
+
+        <div class="chain-row" id="chainA">
+          <div class="block" data-block="genesis">Genesis</div>
+          <div class="block" data-block="1">Block 1</div>
+          <div class="block" data-block="2">Block 2</div>
+          <div class="block" data-block="3">Block 3</div>
+        </div>
+
+        <div class="chain-row" id="chainB" style="display: none">
+          <div class="block" data-block="genesis">Genesis B</div>
+          <div class="block" data-block="1">Block 1</div>
+          <div class="block" data-block="2">Block 2</div>
+        </div>
+
+        <div class="contract-box" id="contractERC20">
+          <div class="contract-header">Smart Contract</div>
+          <div class="contract-functions">
+            <span class="function" id="mint-function">mint()</span>
+            <span class="function" id="transfer-function">transfer()</span>
+          </div>
+        </div>
+
+        <div class="gas-chip" id="gasChip">
+          <span class="gas-icon">⛽</span>
+          <span class="gas-label">ETH</span>
+        </div>
+
+        <div class="bridge" id="bridgeArc">
+          <div class="bridge-line"></div>
+          <div class="bridge-arrow">→</div>
+        </div>
+
+        <div class="use-cases" id="useCases">
+          <div class="use-case" id="nftFrame">🖼️ NFT</div>
+          <div class="use-case" id="defiChart">📈 DeFi</div>
+          <div class="use-case" id="gameSword">⚔️ Game</div>
+          <div class="use-case" id="stableBadge">💰 Stable</div>
+        </div>
+
+        <div class="standards" id="standards">
+          <div class="shelf" id="shelf-erc20">ERC-20</div>
+          <div class="shelf" id="shelf-erc721">ERC-721</div>
+          <div class="shelf" id="shelf-erc1155">ERC-1155</div>
+        </div>
+
+        <div class="seal" id="seal">✓</div>
+
+        <div class="token-shape wrapped-token" id="wTokenShape">
+          <div class="token-inner"></div>
+          <span class="label">W-Token</span>
+        </div>
+      </div>
+
+      <div class="hud">
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="scene-counter" id="scene-counter">1 / 11</span>
+        </div>
+        <div class="controls">
+          <button class="control-btn" id="prev-btn">← Geri</button>
+          <button class="control-btn" id="play-pause-btn">⏸️</button>
+          <button class="control-btn" id="next-btn">İleri →</button>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="coin-shape mini"></div>
+          <span>Coin</span>
+        </div>
+        <div class="legend-item">
+          <div class="token-shape mini"></div>
+          <span>Token</span>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "token-coin-mantigi", 100);
+
+            window.location.href = "../../../testler/coinvetoken/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+    <script src="../../../testler/asimetrik/index.html"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "token-coin-mantigi";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "token-coin-mantigi",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "token-coin-mantigi" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

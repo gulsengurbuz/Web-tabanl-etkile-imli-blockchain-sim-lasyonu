@@ -1,0 +1,386 @@
+.card-suggestion {
+  /* --- PALET (Derin mavi → lacivert + neon-cyan vurgular) --- */
+  --black: 0, 0%, 100%; /* Ana metin: beyaz (koyu zeminde okunur) */
+  --white: 0, 0%, 100%;
+
+  /* Nötr mavi tonlar (ikincil metin/ikon) */
+  --black-muted: 210, 60%, 78%; /* Açık mavi-nötr */
+  --white-smoke: 220, 60%, 16%; /* Koyu mavi yüzey (kart içi parçalar) */
+
+  /* Hover / badge – cyan vurgu (düz renk gerektiğinde) */
+  --green-light: 193, 100%, 60%;
+
+  /* Ana gradyan (istediğin) */
+  --primary-grad: linear-gradient(135deg, #0f67d6 0%, #0b3e88 100%);
+
+  --gap: 12px;
+  --w-card: 330px;
+  --h-card: 380px;
+  --p-card: 1rem;
+  --gap-action: 6px;
+  --sz-action: 58px;
+  --index-action: 2;
+  --round-card: calc(var(--sz-action) / 2 + calc(var(--gap-action) / 2));
+
+  width: var(--w-card);
+  height: var(--h-card);
+  border-radius: var(--round-card);
+  position: relative;
+
+  /* ANA YÜZEY → gradyan */
+  background: var(--color-boxes, var(--primary-grad));
+  padding: var(--p-card);
+
+  /* Mavi tonlu gölge */
+  box-shadow: rgba(10, 58, 140, 0.35) -4px 4px 16px,
+    rgba(10, 58, 140, 0.22) -2px 2px 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recommendations-title {
+  color: hsl(var(--black)); /* Beyaz */
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 2px 0;
+  text-transform: uppercase;
+}
+
+.card-suggestion .corner {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  right: 0;
+  top: 0;
+
+  /* Koyu mavi şerit yüzeyi */
+  background-color: hsl(var(--white-smoke));
+  z-index: 2;
+  border-bottom-left-radius: var(--round-card);
+  padding-bottom: var(--gap-action);
+  padding-left: var(--gap-action);
+  gap: var(--gap-action);
+}
+
+.card-suggestion .corner i[data-corner] {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  z-index: 2;
+  background-color: hsl(var(--white-smoke));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-suggestion .corner i[data-corner]::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: var(--round-card);
+  /* Köşe dolgusu → ANA GRADYAN */
+  background: var(--primary-grad);
+  z-index: -1;
+}
+
+.card-suggestion .corner i[data-corner="tl"] {
+  top: 0;
+  right: 100%;
+}
+.card-suggestion .corner i[data-corner="br"] {
+  right: 0;
+  top: 100%;
+}
+
+.card-suggestion .corner .action {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  height: var(--sz-action);
+  min-height: var(--sz-action);
+  max-height: var(--sz-action);
+  width: var(--sz-action);
+  min-width: var(--sz-action);
+  max-width: var(--sz-action);
+  border: none;
+  outline: none;
+  transition: all 0.5s ease;
+
+  /* Koyu mavi yüzey */
+
+  color: hsl(var(--black-muted));
+  box-shadow: rgba(10, 58, 140, 0.08) 0px 1px 3px 0px,
+    rgba(10, 58, 140, 0.28) 0px 0px 0px 1px, rgba(10, 58, 140, 0.12) 0px 1px 2px,
+    rgba(10, 58, 140, 0.14) 0px 2px 4px;
+}
+.card-suggestion .corner .action:hover {
+  /* Hover → ANA GRADYAN */
+  background: var(--primary-grad);
+}
+.card-suggestion .corner .action svg {
+  width: 32px;
+  height: 32px;
+}
+.card-suggestion .corner .action:hover svg {
+  color: white;
+}
+
+.card-suggestion .boxes {
+  --sz-img: 46px;
+  gap: 16px;
+  width: 100%;
+  position: relative;
+  z-index: 9;
+  max-width: 50%;
+  height: var(--sz-img);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.card-suggestion .boxes .caption {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: calc(
+    var(--w-card) - calc(var(--p-card) * 2) -
+      calc(var(--sz-action) * var(--index-action)) -
+      calc(var(--gap-action) * var(--index-action)) - var(--sz-img) - 16px
+  );
+  margin-top: 18px;
+}
+
+.card-suggestion .boxes .name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  color: hsl(var(--black)); /* Beyaz */
+}
+.card-suggestion .boxes .as {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: hsl(var(--black-muted)); /* Açık mavi-nötr */
+}
+
+.card-suggestion .boxes .name,
+.card-suggestion .boxes .as {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-suggestion .box-body {
+  --sz-img: 32px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 9;
+}
+
+.card-suggestion .box-body .box-content {
+  gap: 16px;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  flex-direction: row;
+  position: relative;
+}
+
+.card-suggestion .box-body .caption {
+  gap: 4px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  font-weight: 400;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3; /* Görünecek satır sayısı */
+  text-overflow: ellipsis;
+
+  /* Koyu zeminde okunur açık metin */
+  color: hsl(var(--black));
+}
+
+.card-suggestion .box-foot {
+  --sz-img: 36px;
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-suggestion .box-foot::before {
+  content: attr(data-title);
+  position: absolute;
+  bottom: calc(100% + 4px);
+  color: hsl(var(--black-muted));
+  min-width: max-content;
+  font-size: 14px;
+}
+
+.card-suggestion .box-foot-figure {
+  font-weight: 400;
+  outline: 1px solid hsl(var(--black-muted), 0.32);
+  width: max-content;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  z-index: 1;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  overflow: hidden;
+  background: hsl(var(--white), 0);
+}
+
+.card-suggestion .box-foot-figure .img {
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.card-suggestion .box-foot-figure button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none transparent;
+  transition: all 0.25s ease;
+}
+
+.card-suggestion .box-foot-figure button svg {
+  transition: all 0.25s ease;
+  transform: rotate(45deg);
+  color: hsl(var(--black-muted));
+}
+
+.card-suggestion .box-foot-figure .img:hover {
+  transform: scale(1.2);
+}
+
+.card-suggestion .box-foot-figure .img:hover ~ button svg,
+.card-suggestion .box-foot-figure button:hover svg {
+  transform: scale(1.25) rotate(0);
+  color: hsl(205, 100%, 50%); /* Canlı mavi vurgu */
+}
+
+.card-suggestion .box-foot-actions {
+  --sz-toggle: 46px;
+  gap: var(--gap);
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.card-suggestion .box-foot-action {
+  cursor: pointer;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--sz-toggle);
+  min-height: var(--sz-toggle);
+  max-height: var(--sz-toggle);
+  width: var(--sz-toggle);
+  min-width: var(--sz-toggle);
+  max-width: var(--sz-toggle);
+  transition: all 0.5s ease;
+  color: hsl(var(--black-muted), 0.78);
+  background-color: transparent;
+}
+
+.card-suggestion .box-foot-action[aria-label="meets"] {
+  /* Aksiyon butonu → düz canlı mavi */
+  background-color: hsl(215, 100%, 50%);
+  color: hsl(var(--white));
+}
+
+.card-suggestion .box-foot-action:hover {
+  color: hsl(var(--black));
+  /* Hover yüzeyi → koyu mavi cam */
+  background-color: hsla(220, 60%, 22%, 0.65);
+}
+
+.card-suggestion .box-foot-action svg {
+  height: calc(var(--sz-toggle) * 0.65);
+  min-height: calc(var(--sz-toggle) * 0.65);
+  max-height: calc(var(--sz-toggle) * 0.65);
+  width: calc(var(--sz-toggle) * 0.65);
+  min-width: calc(var(--sz-toggle) * 0.65);
+  max-width: calc(var(--sz-toggle) * 0.65);
+  color: currentColor;
+}
+
+.card-suggestion .img {
+  font-size: 24px;
+  font-weight: 800;
+  border-radius: 9999px;
+  height: var(--sz-img);
+  min-height: var(--sz-img);
+  max-height: var(--sz-img);
+  width: var(--sz-img);
+  min-width: var(--sz-img);
+  max-width: var(--sz-img);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* Avatar yüzeyi → açık mavi gradyan (koyu zeminde parlasın) */
+  background: linear-gradient(135deg, #eaf6ff, #cfe6ff);
+
+  border: 1px solid hsl(var(--black-muted), 0.16);
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: -moz-none;
+}
+
+.card-suggestion .img svg {
+  position: absolute;
+  background-size: var(--sz-img);
+  height: var(--sz-img);
+  min-height: var(--sz-img);
+  max-height: var(--sz-img);
+  width: var(--sz-img);
+  min-width: var(--sz-img);
+  max-width: var(--sz-img);
+}
+
+.card-suggestion .box-body .img {
+  border-radius: 0;
+}
+
+.card-suggestion .font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.text-xs {
+  font-size: 12px;
+}
+.text-sm {
+  font-size: 14px;
+}

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Eğitim Videoları</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Prompt&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../CSS/background.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+    <link rel="stylesheet" href="../CSS/logo.css" />
+    <link rel="stylesheet" href="../CSS/navbar.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg" id="home-nav">
+      <div class="container-fluid nav-container" id="home-container">
+        <a href="../home/index.html" class="navbar-brand home-logo">
+          <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </a>
+
+        <div class="container-logo">
+          <div class="pane">
+            <label class="label">
+              <span>Blockchain Akademi</span>
+            </label>
+          </div>
+        </div>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 navbar-link-text">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../home/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../animasyonn/index.html">Animasyon</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../videoo/index.html">Video</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../geneltest/index.html">Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../makalee/index.html">Makale</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../hakkımızda/index.html">Hakkımızda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../iletsim/index.html">İletişim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../profilll2/index.html">Profil</a>
+            </li>
+          </ul>
+          <div class="kisisel-not-alma"></div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <section class="hero hero-3d">
+        <div class="hero-bg"></div>
+        <canvas id="hero-network" aria-hidden="true"></canvas>
+        <div class="hero-gradient"></div>
+
+        <div class="parallax">
+          <div class="cube-ring">
+            <span class="cube"></span>
+            <span class="cube"></span>
+            <span class="cube"></span>
+            <span class="cube"></span>
+          </div>
+        </div>
+
+        <div class="container hero-inner">
+          <h1 class="hero-title">Blockchain Eğitim Videoları</h1>
+          <p class="hero-description">
+            Blockchain teknolojisini sıfırdan öğrenin. Temel kavramlardan ileri
+            seviye uygulamalara kadar kapsamlı video eğitim serimizle blockchain
+            dünyasına adım atın.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" id="heroContinueBtn">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Kaldığın Yerden Devam Et
+            </button>
+            <button class="btn btn-outline">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                />
+              </svg>
+              Tüm Seriler
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="content-grid">
+          <div class="main-column">
+            <div class="filters-card">
+              <div class="search-bar">
+                <svg
+                  class="search-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Video ara..."
+                  class="search-input-main"
+                />
+              </div>
+
+              <div class="filter-section">
+                <h3 class="filter-title">Kategoriler</h3>
+                <div class="category-tags" id="categoryTags">
+                  <span class="tag" data-category="Temel">Temel</span>
+                  <span class="tag" data-category="Kriptografi"
+                    >Kriptografi</span
+                  >
+                  <span class="tag" data-category="Ağ">Ağ</span>
+                  <span class="tag" data-category="Yapı">Yapı</span>
+                  <span class="tag" data-category="Konsensüs">Konsensüs</span>
+                  <span class="tag" data-category="Türler">Türler</span>
+                </div>
+              </div>
+
+              <div class="filter-row">
+                <div class="filter-group">
+                  <label class="filter-label">Seviye</label>
+                  <select id="levelSelect" class="select-input">
+                    <option value="">Seviye seçin</option>
+                    <option value="baslangic">Başlangıç</option>
+                    <option value="orta">Orta</option>
+                    <option value="ileri">İleri</option>
+                  </select>
+                </div>
+
+                <div class="filter-group">
+                  <label class="filter-label"
+                    >Maksimum Süre: <span id="durationValue">60</span> dk</label
+                  >
+                  <input
+                    type="range"
+                    id="durationSlider"
+                    min="5"
+                    max="60"
+                    value="30"
+                    step="5"
+                    class="slider"
+                  />
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <label class="filter-label">Sıralama</label>
+                <select id="sortSelect" class="select-input">
+                  <option value="newest">En Yeni</option>
+                  <option value="popular">En Çok İzlenen</option>
+                  <option value="duration">Süre</option>
+                </select>
+              </div>
+
+              <button
+                id="clearFilters"
+                class="btn btn-outline clear-btn"
+                style="display: none"
+              >
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                Filtreleri Temizle
+              </button>
+            </div>
+
+            <div class="video-section">
+              <div class="section-header">
+                <h2 class="section-title">
+                  Videolar (<span id="videoCount">6</span>)
+                </h2>
+              </div>
+
+              <div id="videoGrid" class="video-grid"></div>
+
+              <div id="noResults" class="no-results" style="display: none">
+                <div class="no-results-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path
+                      d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                    />
+                  </svg>
+                </div>
+                <h3>Video bulunamadı</h3>
+                <p>
+                  Arama kriterlerinize uygun video bulunamadı. Filtreleri
+                  değiştirmeyi deneyin.
+                </p>
+                <button class="btn btn-outline" id="noResClearBtn">
+                  Filtreleri Temizle
+                </button>
+              </div>
+
+              <div id="pagination" class="pagination"></div>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="learning-path">
+              <h3 class="path-title">Öğrenme Yolu</h3>
+              <div class="path-progress">
+                <span class="progress-label">İlerleme</span>
+                <span class="progress-fraction">0/5 tamamlandı</span>
+              </div>
+              <div class="progress-bar-full">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+
+              <div class="path-steps"></div>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="section-title">Kaldığın Yer</h3>
+              <div class="saved-video" id="savedVideoCard"></div>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="section-title">Öneriler</h3>
+              <div id="recommendations"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="videoModal" style="display: none">
+      <div class="vm-backdrop" onclick="closeVideo()"></div>
+      <div class="vm-dialog">
+        <button class="vm-close" onclick="closeVideo()" aria-label="Kapat">
+          ×
+        </button>
+
+        <div class="vm-grid">
+          <div class="vm-left">
+            <div class="vm-title-row">
+              <h3 id="vmTitle" class="vm-title">Başlık</h3>
+              <span id="vmBadge" class="vm-level-badge">Seviye</span>
+            </div>
+
+            <video
+              id="vmPlayer"
+              controls
+              preload="metadata"
+              class="vm-video"
+              poster=""
+            ></video>
+
+            <div class="vm-controls">
+              <button id="vmBack10" class="vm-ctrl">⟲ 10sn</button>
+              <button id="vmPlayPause" class="vm-ctrl">▶︎ / ❚❚</button>
+              <button id="vmFwd10" class="vm-ctrl">10sn ⟳</button>
+              <button id="vmMute" class="vm-ctrl">🔇</button>
+            </div>
+          </div>
+
+          <aside class="vm-right">
+            <div class="vm-meta">
+              <div class="vm-chip" id="vmCategory">Kategori</div>
+              <div class="vm-chip" id="vmDuration">Süre</div>
+              <div class="vm-chip" id="vmDate">Yayın</div>
+              <div
+                class="vm-chip vm-certified"
+                id="vmCertified"
+                style="display: none"
+              ></div>
+            </div>
+
+            <p id="vmDesc" class="vm-desc">Açıklama</p>
+
+            <div class="vm-actions">
+              <button class="btn btn-primary" id="vmContinue">
+                Kaldığın Yerden Devam
+              </button>
+              <button class="btn btn-outline" id="vmOpenQuiz">
+                Dersi Bitir • Mini Quiz
+              </button>
+            </div>
+
+            <div
+              class="vm-progress-wrap"
+              id="vmProgressWrap"
+              style="display: none"
+            >
+              <div class="vm-progress-top">
+                <span>İlerleme</span><span id="vmProgressPct">0%</span>
+              </div>
+              <div class="vm-progress-bar">
+                <div
+                  id="vmProgressFill"
+                  class="vm-progress-fill"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <footer class="home-footer">
+      <div class="cotainer">
+        <div class="main">
+          <div class="up">
+            <button class="card1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0,0,256,256"
+                width="30px"
+                height="30px"
+                fill-rule="nonzero"
+                class="instagram"
+              >
+                <g
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(8,8)">
+                    <path
+                      d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <button class="card2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                width="30px"
+                height="30px"
+                class="twitter"
+              >
+                <path
+                  d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="down">
+            <button class="card3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 30 30"
+                width="30px"
+                height="30px"
+                class="github"
+              >
+                <path
+                  d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"
+                ></path>
+              </svg>
+            </button>
+            <button class="card4">
+              <svg
+                height="30px"
+                width="30px"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+                class="discord"
+              >
+                <path
+                  d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="content">
+          <div class="logo-bilgisi"></div>
+          <ul class="footer-link-list">
+            <li><a href="hakkimizda.html" class="hakkimda">Hakkımızda</a></li>
+            <li><a href="iletisim.html" class="iletişim">İletişim</a></li>
+            <li><a href="forum.html" class="Forum">Forum</a></li>
+            <li>
+              <a href="gizlilik-politikasi.html" class="gizlilik-politikası"
+                >Gizlilik Politikası</a
+              >
+            </li>
+            <li>
+              <a href="kullanım-sartlari.html" class="kullanım şartları"
+                >Kullanım Şartları</a
+              >
+            </li>
+          </ul>
+          <div class="footer-paragraf telif-hakkı">
+            &copy; 2024 Örnek Şirket. Tüm hakları saklıdır.
+          </div>
+          <div class="cerezyasasi">
+            <span class="paragraf">Bu web sitesi çerezler kullanmaktadır.</span>
+            <a href="cerez-politikasi.html" class="cerez-link"
+              >Çerez Politikası</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="tasarım.js"></script>
+  </body>
+</html>

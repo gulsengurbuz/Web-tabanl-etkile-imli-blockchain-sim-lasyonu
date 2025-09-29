@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurumsal Blockchain Ağları Nasıl Çalışır?</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Kurumsal Blockchain Ağları Nasıl Çalışır?</h1>
+        <p>İzinli blockchain sistemlerinin adım adım etkileşimli gösterimi</p>
+      </div>
+
+      <div id="step1" class="step-container">
+        <div class="start-card">
+          <div class="icon-building">🏛️</div>
+          <p>Bir kurum ya da konsorsiyum tarafından blockchain ağı oluşturun</p>
+          <button id="startNetworkBtn" class="btn-primary">
+            🏛️ Blockchain Ağını Başlat
+          </button>
+        </div>
+      </div>
+
+      <div id="blockchainContainer" class="blockchain-container hidden">
+        <div id="blockchainBlocks" class="blockchain-blocks"></div>
+
+        <div class="action-buttons">
+          <button id="addNodeBtn" class="btn-outline hidden">
+            <span class="icon">+</span>
+            Yeni Node Ekle
+          </button>
+          <div id="authorizedBadge" class="badge hidden">
+            ✅ Yetkilendirildi - Blok ekleme yetkisi var
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-dots">
+          <div class="dot active" data-step="1"></div>
+          <div class="dot" data-step="2"></div>
+          <div class="dot" data-step="3"></div>
+          <div class="dot" data-step="4"></div>
+          <div class="dot" data-step="5"></div>
+          <div class="dot" data-step="6"></div>
+          <div class="dot" data-step="7"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle"></h3>
+          <button id="closeModal" class="close-btn">×</button>
+        </div>
+        <div class="modal-body">
+          <div id="modalContent"></div>
+          <button id="modalAction" class="btn-primary"></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "kapali-blocckhain", 100);
+            window.location.href = "../../../testler/izinli/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "kapali-blocckhain";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "kapali-blocckhain",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "kapali-blocckhain" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

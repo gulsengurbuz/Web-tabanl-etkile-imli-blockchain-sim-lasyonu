@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
+  color: #e0e0e0;
+  overflow: hidden;
+}
+
+.p2p-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#p2p-canvas {
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3), 0 0 60px rgba(0, 255, 255, 0.1);
+  max-width: 90%;
+  max-height: 90%;
+  aspect-ratio: 16 / 9;
+}
+
+.p2p-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.p2p-modal-overlay.p2p-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.p2p-modal-content {
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.p2p-modal-overlay.p2p-active .p2p-modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.p2p-modal-content h2 {
+  color: #00e6e6;
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.p2p-modal-content p {
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.p2p-button {
+  background-color: #00e6e6;
+  color: #ffffff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 230, 230, 0.3);
+}
+
+.p2p-button:hover {
+  background-color: #00cccc;
+  transform: translateY(-2px);
+}
+
+.p2p-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 230, 230, 0.3);
+}
+@media (max-width: 768px) {
+  .p2p-modal-content {
+    padding: 20px;
+  }
+  .p2p-modal-content h2 {
+    font-size: 20px;
+  }
+  .p2p-modal-content p {
+    font-size: 14px;
+  }
+  .p2p-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

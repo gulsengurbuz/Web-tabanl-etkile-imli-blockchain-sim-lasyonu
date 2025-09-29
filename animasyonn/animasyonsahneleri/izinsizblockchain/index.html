@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Açık Blockchain Ağı</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🔗 AÇIK BLOCKCHAIN AĞI</h1>
+        <p>Herkesin Katılabileceği Merkeziyetsiz Ağ</p>
+      </div>
+
+      <div id="start-screen" class="step-content">
+        <div class="start-content">
+          <div class="start-icon">🔓</div>
+          <p>
+            İzinsiz blockchain ağında herkes blok önerebilir ve topluluk
+            mutabakatı ile onaylanır
+          </p>
+          <button id="start-network-btn" class="btn btn-primary">
+            🔓 Bir izinsiz blockchain ağı başlat
+          </button>
+        </div>
+      </div>
+
+      <div id="blockchain-display" class="step-content hidden">
+        <div id="blockchain-container" class="blockchain-container"></div>
+
+        <div class="action-buttons">
+          <button id="add-block-btn" class="btn btn-success">
+            ➕ Yeni Blok Ekle
+          </button>
+          <button id="reset-btn" class="btn btn-outline hidden">
+            🔄 Tekrar Dene
+          </button>
+        </div>
+      </div>
+
+      <div id="modal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="modal-title"></h2>
+            <button id="modal-close" class="modal-close">&times;</button>
+          </div>
+          <div id="modal-body" class="modal-body"></div>
+        </div>
+      </div>
+
+      <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "acik-blockchain", 100);
+            window.location.href =
+              "../../../testler/izinsizblockchain/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "acik-blockchain";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "acik-blockchain",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "acik-blockchain" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

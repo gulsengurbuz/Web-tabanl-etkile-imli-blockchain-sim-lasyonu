@@ -1,0 +1,137 @@
+:root {
+  --btn-bg: #1f7beccf;
+  --btn-bg-hover: #1866c4;
+  --btn-bg-active: #1254a2;
+  --btn-text: #ffffff;
+  --btn-ring: 0 0 0 4px rgba(31, 122, 236, 0.25);
+  --btn-shadow: 0 6px 16px rgba(31, 122, 236, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+  --btn-shadow-hover: 0 10px 24px rgba(31, 122, 236, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.12);
+  --btn-shadow-active: 0 4px 12px rgba(31, 122, 236, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --btn-bg: #2d8bff;
+    --btn-bg-hover: #2476d6;
+    --btn-bg-active: #1d63b3;
+    --btn-text: #f7faff;
+    --btn-ring: 0 0 0 4px rgba(45, 139, 255, 0.35);
+    --btn-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    --btn-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.55);
+    --btn-shadow-active: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+#finishAnim {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding: 0.8rem 1.25rem;
+  min-width: 12rem;
+
+  font: 600 0.95rem/1 system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  letter-spacing: 0.01em;
+
+  color: var(--btn-text);
+  background: linear-gradient(
+    180deg,
+    var(--btn-bg),
+    color-mix(in oklab, var(--btn-bg) 85%, #000 15%)
+  );
+  border-radius: 12px;
+
+  box-shadow: var(--btn-shadow);
+
+  transition: transform 0.12s ease, box-shadow 0.2s ease, background 0.2s ease,
+    filter 0.2s ease;
+}
+
+#finishAnim:hover {
+  box-shadow: var(--btn-shadow-hover);
+  transform: translateY(-1px);
+  background: linear-gradient(
+    180deg,
+    var(--btn-bg-hover),
+    color-mix(in oklab, var(--btn-bg-hover) 85%, #000 15%)
+  );
+}
+
+#finishAnim:focus-visible {
+  box-shadow: var(--btn-shadow-hover), var(--btn-ring);
+}
+
+#finishAnim:active {
+  transform: translateY(0);
+  box-shadow: var(--btn-shadow-active);
+  background: linear-gradient(
+    180deg,
+    var(--btn-bg-active),
+    color-mix(in oklab, var(--btn-bg-active) 85%, #000 15%)
+  );
+  filter: saturate(1.05);
+}
+
+#finishAnim:disabled,
+#finishAnim[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+#finishAnim::before {
+  content: attr(data-icon);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #finishAnim {
+    transition: none;
+  }
+  #finishAnim:hover,
+  #finishAnim:active {
+    transform: none;
+  }
+}
+
+#finishAnim {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 9999;
+}
+
+@media (max-width: 480px) {
+  #finishAnim {
+    min-width: 10rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+.wrap-bottom-right {
+  position: relative;
+}
+.wrap-bottom-right #finishAnim {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

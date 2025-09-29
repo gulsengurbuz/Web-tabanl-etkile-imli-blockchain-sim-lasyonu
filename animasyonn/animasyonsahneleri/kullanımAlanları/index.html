@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Eğitim Sunumu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-header-top">
+              <div class="scene-badge">
+                <i data-lucide="sparkles"></i>
+                <span id="scene-counter">Sahne 1 / 7</span>
+              </div>
+              <button id="reset-btn" class="reset-button">
+                <i data-lucide="rotate-ccw"></i>
+                Baştan Başla
+              </button>
+            </div>
+
+            <div class="modal-title-section">
+              <h2 id="modal-title" class="modal-title">Blockchain Her Yerde</h2>
+              <div class="title-divider"></div>
+              <p id="modal-description" class="modal-description">
+                Blockchain yalnızca kripto para değildir; finans, sağlık,
+                lojistik, seçim, sanat gibi pek çok alanda güvenli ve şeffaf
+                çözümler sunar.
+              </p>
+              <div class="subtitle-box">
+                <p id="modal-subtitle" class="modal-subtitle">
+                  Küresel teknoloji devrimi başlıyor
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button id="start-animation-btn" class="start-button">
+              <i data-lucide="play"></i>
+              <span id="button-text">Keşfe Başla</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-card">
+        <div class="animation-container">
+          <div id="animation-area" class="animation-area"></div>
+
+          <div id="tooltip" class="tooltip hidden">
+            <span id="tooltip-text"></span>
+          </div>
+
+          <div id="scene-info" class="scene-info hidden">
+            <span id="scene-info-text">Sahne 1: Blockchain Her Yerde</span>
+          </div>
+
+          <div id="replay-btn-container" class="replay-container hidden">
+            <button id="replay-btn" class="replay-button">
+              <i data-lucide="play"></i>
+              Tekrar
+            </button>
+          </div>
+        </div>
+
+        <div id="subtitle-area" class="subtitle-area hidden">
+          <p id="subtitle-text">Küresel teknoloji devrimi başlıyor</p>
+        </div>
+
+        <div id="completion-screen" class="completion-screen hidden">
+          <div class="completion-content">
+            <div class="completion-icon">
+              <i data-lucide="check-circle"></i>
+            </div>
+            <h3 class="completion-title">
+              Tebrikler! Blockchain Yolculuğunuz Tamamlandı
+            </h3>
+            <p class="completion-text">
+              Artık blockchain teknolojisinin farklı sektörlerdeki devrimci
+              etkilerini keşfettiniz. Bu bilgiyi kendi alanınızda nasıl
+              uygulayabileceğinizi düşünün.
+            </p>
+            <button id="final-reset-btn" class="final-reset-button">
+              <i data-lucide="rotate-ccw"></i>
+              Yeniden Başla
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(
+              2,
+              "bulockchain-kullanim-alanlari",
+              100
+            );
+            window.location.href =
+              "../../../testler/kullanımAlanları/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "bulockchain-kullanim-alanlari";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "bulockchain-kullanim-alanlari",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "bulockchain-kullanim-alanlari" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

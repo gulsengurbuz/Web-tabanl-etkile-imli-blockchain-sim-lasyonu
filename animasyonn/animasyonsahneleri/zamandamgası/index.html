@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zaman Damgası Açıklayıcı</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Zaman Damgası Açıklayıcı</h1>
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span id="modal-icon" class="modal-icon">📅</span>
+            <h2 id="modal-title">Zaman Damgası Nedir?</h2>
+          </div>
+          <p id="modal-text">
+            Bir verinin oluşturulduğu anı ispatlayan dijital mühürdür.
+            Blockchain'e kaydedildiğinde, bu zaman bilgisi değiştirilemez ve
+            güvence altına alınır.
+          </p>
+          <button id="modal-close" class="modal-button">Anladım</button>
+        </div>
+      </div>
+
+      <div id="animation-container" class="animation-container">
+        <div id="step1-animation" class="step-animation">
+          <div id="data-box" class="data-box">Ali → 5 BTC → Zeynep</div>
+          <div id="golden-seal" class="golden-seal">
+            <span id="timestamp-text" class="timestamp-text"
+              >12.08.2025 – 14:32</span
+            >
+          </div>
+        </div>
+
+        <div id="step2-animation" class="step-animation">
+          <div id="data-box-2" class="data-box left-position">Veri Kutusu</div>
+          <div id="particles" class="particles"></div>
+          <div id="hash-box" class="hash-box">HASH</div>
+          <div id="datetime-tag" class="datetime-tag">Dijital Zaman</div>
+          <div id="certificate" class="certificate">
+            Zaman Damgası Sertifikası
+          </div>
+          <div id="blockchain-line" class="blockchain-line">
+            <div id="empty-block" class="blockchain-block">
+              <span id="block-content">Boş Blok</span>
+              <div id="check-icon" class="check-icon">✓</div>
+            </div>
+            <div id="chain-link" class="chain-link"></div>
+          </div>
+        </div>
+
+        <div id="step3-animation" class="step-animation">
+          <div id="blockchain-line-3" class="blockchain-line">
+            <div id="stamped-block" class="blockchain-block highlighted">
+              <div id="seal-3" class="seal">✓</div>
+            </div>
+          </div>
+          <div id="attacker" class="attacker">
+            <div class="attacker-icon">👤</div>
+            <p>Saldırgan</p>
+          </div>
+          <div id="original-data" class="data-box original-data">
+            Orijinal Veri: Ali → 5 BTC → Zeynep
+            <div class="status valid">✓ Doğrulandı</div>
+          </div>
+          <div id="modified-data" class="data-box modified-data">
+            Değiştirilmiş Veri: Ali → <span id="btc-amount">5 BTC</span> →
+            Zeynep
+            <div id="invalid-status" class="status invalid">✗ Geçersiz</div>
+          </div>
+        </div>
+
+        <div id="step4-animation" class="step-animation">
+          <div id="final-lock" class="final-lock">
+            <div class="lock-icon">🔒</div>
+            <p>Güven Sağlandı</p>
+          </div>
+          <div id="blockchain-line-4" class="blockchain-line">
+            <div id="focused-block" class="blockchain-block">
+              <div id="certificate-seal" class="certificate-seal">
+                Sertifika
+              </div>
+            </div>
+            <div class="blockchain-block verified">✓</div>
+            <div class="blockchain-block verified">✓</div>
+            <div class="blockchain-block verified">✓</div>
+          </div>
+          <div id="explanation-icons" class="explanation-icons">
+            <div class="icon-item">
+              <div class="icon">📅</div>
+              <p>Oluşturulma zamanı kanıtlanır</p>
+            </div>
+            <div class="icon-item">
+              <div class="icon">🔐</div>
+              <p>Değişiklikler anında fark edilir</p>
+            </div>
+            <div class="icon-item">
+              <div class="icon">🛡️</div>
+              <p>Kayıtlar kalıcı ve güvenlidir</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="next-step" class="next-step-button">Sonraki Adım</button>
+    </div>
+
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "zaman-damgasi", 100);
+            window.location.href = "../../../testler/zamandamgası/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "zaman-damgasi";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "zaman-damgasi",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "zaman-damgasi" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

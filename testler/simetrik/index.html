@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simetrik Blockhain Ağı— Mini Quiz</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <h1 class="brand">Simetrik Blocckhain Ağı— Mini Quiz</h1>
+        <!-- Açma/kapatma butonu yok -->
+      </header>
+
+      <!-- Quiz doğrudan açık -->
+      <section id="quiz-container" class="quiz" aria-live="polite">
+        <div class="quiz-card">
+          <div class="quiz-head">
+            <div class="qh-left">
+              <div class="quiz-badge">Mini Quiz</div>
+              <h3 id="quiz-title">Bilgini Test Et</h3>
+            </div>
+            <div class="qh-right">
+              <div class="pill">
+                <span id="quiz-progress">1</span>/<span id="quiz-total">8</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz-body">
+            <div class="progress">
+              <div
+                id="quiz-progress-bar"
+                class="progress-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+
+            <div id="quiz-question" class="question">Soru metni</div>
+            <div id="quiz-choices" class="choices"></div>
+
+            <div class="quiz-actions">
+              <button id="quiz-prev" class="btn" disabled>Önceki</button>
+              <button id="quiz-next" class="btn btn-primary">Sonraki</button>
+              <button id="quiz-submit" class="btn btn-success hidden">
+                Bitir
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="quiz-result" class="quiz-result hidden">
+          <div class="quiz-card">
+            <h3>Sonuçların</h3>
+            <p id="quiz-score-text">Skor: —</p>
+            <div id="quiz-review" class="review"></div>
+            <div class="quiz-actions">
+              <button id="quiz-retry" class="btn">Tekrar Dene</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { saveQuizResult } from "../../shared/progress-client.js";
+
+      // Klasik script.js tarafından çağrılacak global fonksiyon:
+      window.__saveQuiz = async ({
+        testId = 26,
+        score,
+        total,
+        topic = "simetrik",
+      }) => {
+        try {
+          await saveQuizResult(testId, score, total, topic);
+          console.log("Quiz sonucu kaydedildi:", {
+            testId,
+            score,
+            total,
+            topic,
+          });
+
+          // İstersen burada yönlendirme yap:
+          // window.location.href = "/home/index.html";
+        } catch (e) {
+          console.warn("Sonuç kaydı hatası:", e);
+          // Uyarı göstermek istersen:
+          // alert(e?.message || String(e));
+        }
+      };
+    </script>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

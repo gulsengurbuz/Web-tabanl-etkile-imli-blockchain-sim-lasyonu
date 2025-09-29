@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlockchainAkademi</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="hero.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Prompt&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+        <link rel="stylesheet" href="../CSS/background.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+    <link rel="stylesheet" href="../CSS/logo.css" />
+    <link rel="stylesheet" href="../CSS/navbar.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+     <nav class="navbar navbar-expand-lg" id="home-nav">
+      <div class="container-fluid nav-container" id="home-container">
+        <a href="../home/index.html" class="navbar-brand home-logo">
+          <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </a>
+       <div class="container-logo">
+          <div class="pane">
+            <label class="label">
+              <span>Blockchain Akademi</span>
+            </label>
+          </div>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 navbar-link-text">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../home/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../animasyonn/index.html">Animasyon</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../videoo/index.html">Video</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../geneltest/index.html">Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../makalee/index.html">Makale</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../hakkımızda/index.html">Hakkımızda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../iletsim/index.html">İletişim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../profilll2/index.html">Profil</a>
+            </li>
+          </ul>
+          <div class="kisisel-not-alma"></div>
+        </div>
+      </div>
+    </nav>
+<section class="ordering-section animations-bg">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern">
+    <canvas id="hero-network" aria-hidden="true"></canvas>
+  </div>
+  <div class="hero-gradient"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i data-lucide="sparkles"></i>
+        <span> Web Tabanlı Etkileşimli Blockchain Simülasyonu</span>
+      </div>
+
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Blockchain’i <span class="gradient-text">Etkileşimli</span> ve
+          <span class="gradient-text">Görsel</span> Olarak Öğren
+        </h1>
+        <p class="hero-description">
+          Hash (SHA-256), Blok Yapısı, Merkle Ağacı ve PoW/PoS mekanizmalarını
+          sahne sahne animasyonlarla deneyimle. Quiz’lerle pekiştir,
+          ilerlemeni kaydet, Blockchaini öğrenme yolunda ilerle.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <a href="#ogrenme-yolu" class="btn btn-primary">
+          <i data-lucide="play-circle"></i>
+          Öğrenmeye Başla
+        </a>
+       
+      </div>
+
+      
+    </div>
+  </div>
+</section>
+
+      <div class="content-grid">
+        
+       <aside class="filter-sidebar"> 
+  <div class="filter-card">
+    <div class="filter-header">
+      <div class="filter-icon">
+        <i class="fas fa-sliders-h"></i>
+      </div>
+      <div class="filter-title">
+        <h2>Akıllı Filtreler</h2>
+        <p>İçerikleri kategorilere göre filtreleyin</p>
+      </div>
+    </div>
+
+    <div class="selected-filters" id="selectedFilters" style="display: none">
+      <div class="filter-tags" id="filterTags"></div>
+    </div>
+
+  <div class="filter-categories">
+
+  <div class="filter-category">
+    <button class="category-toggle active" data-category="temel">
+      <span>Temel Kavramlar</span>
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="category-items active" data-category="temel">
+      <button class="filter-item"
+              data-filter="Veri"
+              title="Veri türleri ve yapılandırılmış/yapısız veri farkını görsel örneklerle öğren."
+              data-step="1.1"
+              data-id="1"
+              data-url="./animasyonsahneleri/veri/index.html"
+              data-image="../img/veri.png"
+              data-level="Başlangıç"
+              data-duration="5 dk">
+        Veri
+      </button>
+
+      <button class="filter-item"
+              data-filter="Veri Kaydı"
+              title="Dosya, log ve kayıt defteri yaklaşımıyla veriyi kalıcı hâle getirme mantığı."
+              data-step="1.2"
+              data-id="2"
+              data-url="./animasyonsahneleri/verikaydiasıl/index.html"
+              data-image="../img/verikaydı.png"
+              data-level="Başlangıç"
+              data-duration="6 dk">
+        Veri Kaydı
+      </button>
+
+      <button class="filter-item"
+              data-filter="Veritabanı"
+              title="Tablo/belge/KV modelleri, CRUD ve tutarlılık kavramının hızlı özeti."
+              data-step="1.3"
+              data-id="3"
+              data-url="./animasyonsahneleri/veritabani/index.html"
+              data-image="../img/veritabanı.png"
+              data-level="Başlangıç"
+              data-duration="7 dk">
+        Veritabanı
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="filter-category">
+    <button class="category-toggle" data-category="ag-teknolojileri">
+      <span>Ağ Teknolojileri</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="category-items" data-category="ag-teknolojileri">
+      <button class="filter-item"
+              data-filter="Merkezi"
+              title="Tek merkezli mimarinin artıları/eksileri ve tek hata noktası problemi."
+              data-step="2.1"
+              data-id="4"
+              data-url="./animasyonsahneleri/Merkezi/index.html"
+              data-image="../img/merkezi.png"
+              data-level="Başlangıç"
+              data-duration="6 dk">
+        Merkezi
+      </button>
+
+      <button class="filter-item"
+              data-filter="Merkeziyetsiz"
+              title="Birden çok merkezle daha dayanıklı ağlar; koordinasyon ve yönetişim zorlukları."
+              data-step="2.2"
+              data-id="5"
+              data-url="./animasyonsahneleri/Merkeziyetsiz/index.html"
+              data-image="../img/merkeziyetsiz.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Merkeziyetsiz
+      </button>
+
+      <button class="filter-item"
+              data-filter="P2P"
+              title="Eşten eşe iletişim; düğümlerin sunucu olmadan nasıl buluştuğunu gör."
+              data-step="2.3"
+              data-id="6"
+              data-url="./animasyonsahneleri/p2p2/index.html"
+              data-image="../img/p2p.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        P2P
+      </button>
+
+      <button class="filter-item"
+              data-filter="Dağıtık Ağ"
+              title="İş ve verinin ağ geneline yayılması; kopyalama ve tutarlılık stratejileri."
+              data-step="2.4"
+              data-id="7"
+              data-url="./animasyonsahneleri/dagıtıkAg/index.html"
+              data-image="../img/dağıtıkağ.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Dağıtık Ağ
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-category">
+    <button class="category-toggle" data-category="kriptografi">
+      <span>Kriptografi</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="category-items" data-category="kriptografi">
+      <button class="filter-item"
+              data-filter="Anahtar Yönetimi"
+              title="Anahtar üretimi, saklama, dağıtım ve yenileme; özel anahtarın korunması."
+              data-step="3.1"
+              data-id="9"
+              data-url="./animasyonsahneleri/anahtarYöntemi/index.html"
+              data-image="../img/anahtaryönetimi.png"
+              data-level="Orta"
+              data-duration="7 dk">
+        Anahtar Yönetimi
+      </button>
+
+      <button class="filter-item"
+              data-filter="Hash Fonksiyonları"
+              title="Tek yönlü özet, sabit uzunluk, çakışma direnci ve bütünlük kanıtı."
+              data-step="3.2"
+              data-id="10"
+              data-url="./animasyonsahneleri/hash/index.html"
+              data-image="../img/hashfonksiyonları.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Hash Fonksiyonları
+      </button>
+
+      <button class="filter-item"
+              data-filter="Dijital İmza"
+              title="Özel anahtarla imzalama, açık anahtarla doğrulama ve kimlik kanıtı."
+              data-step="3.3"
+              data-id="11"
+              data-url="./animasyonsahneleri/dijitalimza/index.html"
+              data-image="../img/dijitalimza.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Dijital İmza
+      </button>
+
+      <button class="filter-item"
+              data-filter="Zaman Damgası"
+              title="Bir verinin belirli zamanda var olduğunu kanıtlama ve zincir üzerinde sıralama."
+              data-step="3.4"
+              data-id="12"
+              data-url="./animasyonsahneleri/zamandamgası/index.html"
+              data-image="../img/zamandamgası.png"
+              data-level="Orta"
+              data-duration="7 dk">
+        Zaman Damgası
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-category">
+    <button class="category-toggle" data-category="blockchain-yapisi">
+      <span>Blockchain Yapısı</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="category-items" data-category="blockchain-yapisi">
+      <button class="filter-item"
+              data-filter="Blok Yapısı"
+              title="Header (önceki hash, zaman, nonce) ve gövdedeki işlemler; temel şema."
+              data-step="4.1"
+              data-id="13"
+              data-url="./animasyonsahneleri/blok/index.html"
+              data-image="../img/blokyapısı.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Blok Yapısı
+      </button>
+
+      <button class="filter-item"
+              data-filter="Merkle Ağaçları"
+              title="İşlemlerden Merkle root üretimi ve hafif kanıt (Merkle proof) mantığı."
+              data-step="4.2"
+              data-id="14"
+              data-url="./animasyonsahneleri/merklee/index.html"
+              data-image="../img/merklee.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Merkle Ağaçları
+      </button>
+
+      <button class="filter-item"
+              data-filter="Blockchain"
+              title="Blokların önceki blok özetiyle bağlanması ve değişime karşı dayanıklılık."
+              data-step="4.3"
+              data-id="15"
+              data-url="./animasyonsahneleri/blchk/index.html"
+              data-image="../img/Blochchain.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Blockchain
+      </button>
+
+      <button class="filter-item"
+              data-filter="İşlemler ve Blok Doğrulama"
+              title="İşlem formatı, imza kontrolü ve blok geçerlilik kurallarının görsel özeti."
+              data-step="4.4"
+              data-id="16"
+              data-url="./animasyonsahneleri/BlocckhainİslemDogrulama/index.html"
+              data-image="../img/islemlervedogrülama.png"
+              data-level="Orta"
+              data-duration="9 dk">
+        İşlemler ve Blok Doğrulama
+      </button>
+    </div>
+  </div>
+  <div class="filter-category">
+    <button class="category-toggle" data-category="konsensus">
+      <span>Konsensüs Mekanizmaları</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="category-items" data-category="konsensus">
+      <button class="filter-item"
+              data-filter="Proof of Work (PoW)"
+              title="Zorluk ayarı, enerji maliyeti ve güvenlik ilişkisini simülasyonla gör."
+              data-step="5.1"
+              data-id="17"
+              data-url="./animasyonsahneleri/pow/index.html"
+              data-image="../img/pow.png"
+              data-level="Orta"
+              data-duration="9 dk">
+        Proof of Work (PoW)
+      </button>
+
+      <button class="filter-item"
+              data-filter="Proof of Stake (PoS)"
+              title="Stake, doğrulayıcı seçimi ve slashing mekanizmasının görsel anlatımı."
+              data-step="5.2"
+              data-id="18"
+              data-url="./animasyonsahneleri/pos/index.html"
+              data-image="../img/pos.png"
+              data-level="İleri"
+              data-duration="10 dk">
+        Proof of Stake (PoS)
+      </button>
+    </div>
+  </div>
+  
+  <div class="filter-category">
+    <button class="category-toggle" data-category="blockchain-turleri">
+      <span>Blockchain Türleri</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="category-items" data-category="blockchain-turleri">
+      <button class="filter-item"
+              data-filter="Açık (Public) Blockchain"
+              title="Herkese açık katılım ve sansüre dayanıklılık; teşviklerle güvenlik."
+              data-step="6.1"
+              data-id="21"
+              data-url="./animasyonsahneleri/simetrik/index.html"
+              data-image="../img/acikblockchain.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Açık (Public) Blockchain
+      </button>
+      <button class="filter-item"
+              data-filter="Özel (Private) Blockchain"
+              title="İzinli erişim, kurum içi süreçler ve performans/uyum avantajları."
+              data-step="6.2"
+              data-id="22"
+              data-url="./animasyonsahneleri/asimetrik/index.html"
+              data-image="../img/kapaliblockchain.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Özel (Private) Blockchain
+      </button>
+      <button class="filter-item"
+              data-filter="Konsorsiyum Blockchain"
+              title="Birden çok kurumun birlikte işlettiği izinli ağlar ve yönetişim."
+              data-step="6.3"
+              data-id="23"
+              data-url="./animasyonsahneleri/konsörsiyum/index.html"
+              data-image="../img/konsorsiyum.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Konsorsiyum Blockchain
+      </button>
+      <button class="filter-item"
+              data-filter="Hibrit Modeller"
+              title="Kamu + özel katmanların bir arada kullanımı; veri/uygulama ayrımı."
+              data-step="6.4"
+              data-id="24"
+              data-url="./animasyonsahneleri/hibritblockchain/index.html"
+              data-image="../img/Hibritblockchain.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Hibrit Modeller
+      </button>
+    </div>
+  </div>
+  <div class="filter-category">
+    <button class="category-toggle" data-category="gelismis-yapilar">
+      <span>Gelişmiş Yapılar</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="category-items" data-category="gelismis-yapilar">
+      <button class="filter-item"
+              data-filter="Çatallaşma (Fork)"
+              title="Ağ ayrışmaları ve protokol uyumsuzlukları; soft/hard fork."
+              data-step="7.1"
+              data-id="25"
+              data-key="25-fork"
+              data-url="./animasyonsahneleri/FORK/index.html"
+              data-image="../img/fork.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Çatallaşma (Fork)
+      </button>
+      <button class="filter-item"
+              data-filter="Akıllı Sözleşmeler"
+              title="Koşullar gerçekleştiğinde çalışan programlanabilir kurallar."
+              data-step="7.2"
+              data-id="25"
+              data-key="25-contracts"
+              data-url="./animasyonsahneleri/akıllısözleşme/index.html"
+              data-image="../img/akıllısözleşme.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Akıllı Sözleşmeler
+      </button>
+      <button class="filter-item"
+              data-filter="Token / Coin Mantığı"
+              title="Fungible/NFT, arz, dağıtım ve teşvik mekanizmaları."
+              data-step="7.3"
+              data-id="27"
+              data-url="./animasyonsahneleri/coinvetoken/index.html"
+              data-image="../img/tokencoin.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Token / Coin Mantığı
+      </button>
+    </div>
+  </div>
+  <div class="filter-category">
+    <button class="category-toggle" data-category="uygulamalar">
+      <span>Uygulamalar</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="category-items" data-category="uygulamalar">
+      <button class="filter-item"
+              data-filter="Blockchain Kullanım Alanları"
+              title="Blockchain’in finans, sağlık, tedarik zinciri, kimlik, oylama vb. alanlarda kullanımı."
+              data-step="8.1"
+              data-id="28"
+              data-url="./animasyonsahneleri/kullanımAlanları/index.html"
+              data-image="../img/Blockchainkullanımalanları.png"
+              data-level="Orta"
+              data-duration="8 dk">
+        Blockchain Kullanım Alanları
+      </button>
+    </div>
+  </div>
+
+</div>
+
+  </div>
+      </aside>
+
+
+        <div class="main-content-area">
+          <section class="animation-section">
+            <div class="section-header">
+              <div class="section-badge">
+                <i class="fas fa-play-circle"></i>
+                <span>Tüm Animasyonlar</span>
+              </div>
+              <h2>Blockchain Animasyonları</h2>
+              <p>
+                Blockchain teknolojisini görsel olarak keşfedin 
+              </p>
+              <div class="animation-count">
+                <i class="fas fa-sparkles"></i>
+                <span id="animationCount"></span>
+              </div>
+            </div>
+            <div class="animation-grid" id="animationGrid">
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+      <footer class="home-footer">
+      <div class="cotainer">
+        <div class="main">
+          <div class="up">
+            <button class="card1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0,0,256,256"
+                width="30px"
+                height="30px"
+                fill-rule="nonzero"
+                class="instagram"
+              >
+                <g
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(8,8)">
+                    <path
+                      d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <button class="card2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                width="30px"
+                height="30px"
+                class="twitter"
+              >
+                <path
+                  d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="down">
+            <button class="card3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 30 30"
+                width="30px"
+                height="30px"
+                class="github"
+              >
+                <path
+                  d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"
+                ></path>
+              </svg>
+            </button>
+            <button class="card4">
+              <svg
+                height="30px"
+                width="30px"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+                class="discord"
+              >
+                <path
+                  d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="content">
+          <div class="logo-bilgisi"></div>
+          <ul class="footer-link-list">
+            <li><a href="hakkimizda.html" class="hakkimda">Hakkımızda</a></li>
+            <li><a href="iletisim.html" class="iletişim">İletişim</a></li>
+            <li><a href="forum.html" class="Forum">Forum</a></li>
+            <li>
+              <a href="gizlilik-politikasi.html" class="gizlilik-politikası"
+                >Gizlilik Politikası</a
+              >
+            </li>
+            <li>
+              <a href="kullanım-sartlari.html" class="kullanım şartları"
+                >Kullanım Şartları</a
+              >
+            </li>
+          </ul>
+          <div class="footer-paragraf telif-hakkı">
+            &copy; 2024 Örnek Şirket. Tüm hakları saklıdır.
+          </div>
+          <div class="cerezyasasi">
+            <span class="paragraf">Bu web sitesi çerezler kullanmaktadır.</span>
+            <a href="cerez-politikasi.html" class="cerez-link"
+              >Çerez Politikası</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="hero.js"></script>
+    <script type="module" src="script.js"></script>
+    
+
+  </body>
+</html>

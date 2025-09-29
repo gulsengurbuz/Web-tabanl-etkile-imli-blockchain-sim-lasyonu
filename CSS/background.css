@@ -1,0 +1,45 @@
+nav {
+  background: linear-gradient(135deg, #0f67d6 0%, #0b3e88 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+header {
+  background: linear-gradient(to right, #000093, #0077ff);
+  height: 15rem;
+}
+
+.home_header .home-container .header-form {
+  background-color: #ffffff32;
+  border-radius: 10px;
+  width: 39rem;
+  height: 6rem;
+}
+.home_header .home-container .header-form .form-search {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  height: 3rem;
+  width: 35rem;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.home_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-searchbar {
+  border-radius: 100px solid black;
+}
+.header-searchbar .header-form {
+}
+
+.header-searchbar,
+.header-jeton {
+  display: flex;
+  align-items: center;
+}

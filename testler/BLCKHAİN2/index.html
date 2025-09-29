@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Açıklayıcı</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app" class="app-container">
+      Sahne içeriği buraya JavaScript tarafından yüklenecek
+    </div>
+
+    <div id="footer" class="footer">
+      <span class="font-bold">📌 Alt Bilgi:</span>
+      <span id="footer-text"></span>
+    </div>
+
+    Modal Yapısı
+    <div id="modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title" class="modal-title"></h2>
+        </div>
+        <div class="modal-body">
+          <p id="modal-description" class="modal-description"></p>
+        </div>
+        <div class="modal-footer">
+          <button id="modal-continue-btn" class="modal-button">Devam Et</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

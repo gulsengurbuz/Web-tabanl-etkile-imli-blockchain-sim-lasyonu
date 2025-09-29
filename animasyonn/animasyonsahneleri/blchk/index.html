@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Animasyonu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div id="animation-container">
+      Modal Yapısı
+      <div id="modal-overlay" class="hidden">
+        <div id="modal-content">
+          <h2 id="modal-title"></h2>
+          <p id="modal-description"></p>
+          <button id="modal-continue-btn">Devam</button>
+        </div>
+      </div>
+
+      Sahne 1: Bloktan Blockchain'e Geçiş
+      <div id="scene1" class="scene hidden">
+        <div class="block-text" id="block-text-1">Bu bir blok</div>
+        <div class="block" id="block-s1-1">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">İşlem 1</div>
+          <div class="block-prev-hash-label">PREVIOUS HASH</div>
+          <div class="block-prev-hash-content">0</div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content">0000abc123...</div>
+        </div>
+        <div class="block" id="block-s1-2">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">İşlem 2</div>
+          <div class="block-prev-hash-label">PREVIOUS HASH</div>
+          <div class="block-prev-hash-content">0000prev1...</div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content">0000hash1...</div>
+        </div>
+        <div class="block" id="block-s1-3">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">İşlem 3</div>
+          <div class="block-prev-hash-label">PREVIOUS HASH</div>
+          <div class="block-prev-hash-content">0000prev2...</div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content">0000hash2...</div>
+        </div>
+        <div class="block" id="block-s1-4">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">İşlem 4</div>
+          <div class="block-prev-hash-label">PREVIOUS HASH</div>
+          <div class="block-prev-hash-content">0000prev3...</div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content">0000hash3...</div>
+        </div>
+        <div class="chain-link" id="link-s1-1"></div>
+        <div class="chain-link" id="link-s1-2"></div>
+        <div class="chain-link" id="link-s1-3"></div>
+        <div class="footer-text" id="footer-s1"></div>
+      </div>
+
+      Sahne 2: Genesis Block
+      <div id="scene2" class="scene hidden">
+        Persistent Blockchain Chain at the top
+        <div class="top-chain-container">
+          <div class="block top-chain-block" id="top-chain-1">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #1</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000abc123...</div>
+          </div>
+          <div class="chain-link top-chain-link" id="top-link-1"></div>
+          <div class="block top-chain-block" id="top-chain-2">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #2</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0000abc123...</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000def456...</div>
+          </div>
+          <div class="chain-link top-chain-link" id="top-link-2"></div>
+          <div class="block top-chain-block" id="top-chain-3">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #3</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0000def456...</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000ghi789...</div>
+          </div>
+          <div class="chain-link top-chain-link" id="top-link-3"></div>
+          <div class="block top-chain-block" id="top-chain-4">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #4</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0000ghi789...</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000jkl012...</div>
+          </div>
+        </div>
+
+        <div class="block" id="genesis-block-s2">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">Welcome to Blockchain Demo 2.0!</div>
+          <div class="block-prev-hash-label">PREVIOUS HASH</div>
+          <div class="block-prev-hash-content">0</div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content">000dc75a3...</div>
+        </div>
+        <div class="genesis-info-box" id="genesis-info-box"></div>
+        <div class="footer-text" id="footer-s2"></div>
+      </div>
+
+      Sahne 3: Madencilik
+      <div id="scene3" class="scene hidden">
+        <div class="block" id="mining-block-target">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">Yeni İşlem Onayı</div>
+          <div class="block-prev-hash-label" id="mining-prev-hash-label">
+            PREVIOUS HASH
+          </div>
+          <div class="block-prev-hash-content" id="mining-prev-hash-content">
+            abc123def456...
+          </div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content" id="mining-hash-content"></div>
+        </div>
+        <div class="info-box-small" id="mining-info-text"></div>
+        <div class="miner-container">
+          <div class="miner" id="miner-1">
+            <div class="miner-icon">💻</div>
+            <div class="miner-name">Madenci A</div>
+            <div class="miner-status"></div>
+          </div>
+          <div class="miner" id="miner-2">
+            <div class="miner-icon">💻</div>
+            <div class="miner-name">Madenci B</div>
+            <div class="miner-status"></div>
+          </div>
+          <div class="miner" id="miner-3">
+            <div class="miner-icon">💻</div>
+            <div class="miner-name">Madenci C</div>
+            <div class="miner-status"></div>
+          </div>
+        </div>
+        <div class="hash-display-container">
+          <div class="hash-display" id="nonce-display">Nonce: 0</div>
+          <div class="hash-display" id="hash-output">Hash:</div>
+        </div>
+        <div class="mining-result-text" id="mining-result"></div>
+        <div class="block-added-visual" id="block-added-visual">
+          <div class="block-added-text">Blok Zincire Eklendi!</div>
+        </div>
+        <div class="footer-text" id="footer-s3"></div>
+      </div>
+
+      Sahne 4: Blockchain Kuralları
+      <div id="scene4" class="scene hidden">
+        <div class="block" id="s4-block-prev">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">Önceki Blok Verisi</div>
+          <div class="block-prev-hash-label">PREVIOUS HASH</div>
+          <div class="block-prev-hash-content">0000def456...</div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content">0000abc123...</div>
+        </div>
+        <div class="block-arrow">→</div>
+        <div class="block" id="s4-block-new">
+          <div class="block-data-label">DATA</div>
+          <div class="block-data-content">Yeni Blok Verisi</div>
+          <div class="block-prev-hash-label">PREVIOUS HASH</div>
+          <div class="block-prev-hash-content">0000abc123...</div>
+          <div class="block-hash-label">HASH</div>
+          <div class="block-hash-content">0000xyz789...</div>
+        </div>
+
+        <div class="control-sections-container">
+          <div class="control-section" id="prev-hash-control">
+            <div class="control-title">Önceki Hash Kontrolü</div>
+            <div class="check-status" id="prev-hash-check"></div>
+          </div>
+          <div class="control-section" id="difficulty-control">
+            <div class="control-title">Zorluk Kontrolü</div>
+            <div class="check-status" id="difficulty-check"></div>
+            <div class="control-subtitle">(Madencilikteki gibi)</div>
+          </div>
+          <div class="control-section" id="consensus-control">
+            <div class="control-title">Ağ Onayı (Konsensüs)</div>
+            <div class="nodes-container">
+              <div class="node" id="node-1"></div>
+              <div class="node" id="node-2"></div>
+              <div class="node" id="node-3"></div>
+              <div class="node" id="node-4"></div>
+              <div class="node" id="node-5"></div>
+            </div>
+            <div class="consensus-status" id="consensus-status"></div>
+          </div>
+        </div>
+        <div class="footer-text" id="footer-s4"></div>
+      </div>
+
+      Sahne 5: Blockchain Tanımı
+      <div id="scene5" class="scene hidden">
+        <div class="block-row-s5">
+          <div class="block" id="s5-block-1">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #1</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000abc123...</div>
+          </div>
+          <div class="chain-link" id="link-s5-1"></div>
+          <div class="block" id="s5-block-2">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #2</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0000abc123...</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000def456...</div>
+          </div>
+          <div class="chain-link" id="link-s5-2"></div>
+          <div class="block" id="s5-block-3">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #3</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0000def456...</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000ghi789...</div>
+          </div>
+          <div class="chain-link" id="link-s5-3"></div>
+          <div class="block" id="s5-block-4">
+            <div class="block-data-label">DATA</div>
+            <div class="block-data-content">İşlem #4</div>
+            <div class="block-prev-hash-label">PREVIOUS HASH</div>
+            <div class="block-prev-hash-content">0000ghi789...</div>
+            <div class="block-hash-label">HASH</div>
+            <div class="block-hash-content">0000jkl012...</div>
+          </div>
+        </div>
+        <div class="info-box" id="blockchain-info-box"></div>
+        <div class="footer-text" id="footer-s5"></div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "blockchain", 100);
+
+            window.location.href = "../../../testler/blchk/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+    <script src="../../../testler/asimetrik/index.html"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "blockchain";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "blockchain",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "blockchain" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

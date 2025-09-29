@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Proof of Work Animation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <div class="title-section">
+            <h2 id="scene-title">Sahne 1: İşlem Havuzu (Transaction Pool)</h2>
+            <p id="scene-description">
+              Kullanıcılar tarafından gönderilen işlemler mempool'da bekler ve
+              doğrulanmayı bekler
+            </p>
+          </div>
+          <div class="navigation-buttons">
+            <button id="prev-btn" class="nav-btn" disabled>
+              <span>‹</span>
+            </button>
+            <button id="next-btn" class="nav-btn">
+              <span>›</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-info">
+            <span>Sahne İlerlemesi</span>
+            <span id="progress-text">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div id="animation-container" class="animation-container">
+          Animation scenes will be rendered here
+        </div>
+
+        <div class="controls">
+          <button id="play-btn" class="control-btn primary">
+            <span id="play-icon">▶</span>
+            <span id="play-text">Başlat</span>
+          </button>
+          <button id="auto-btn" class="control-btn secondary">
+            <span id="auto-icon">🔄</span>
+            <span id="auto-text">Otomatik Oynat</span>
+          </button>
+          <button id="reset-btn" class="control-btn secondary">
+            <span>↻</span>
+            <span>Sıfırla</span>
+          </button>
+        </div>
+
+        <div class="scene-indicators">
+          <div id="scene-progress" class="scene-progress">
+            <div class="scene-bar" data-scene="1"></div>
+            <div class="scene-bar" data-scene="2"></div>
+            <div class="scene-bar" data-scene="3"></div>
+            <div class="scene-bar" data-scene="4"></div>
+            <div class="scene-bar" data-scene="5"></div>
+            <div class="scene-bar" data-scene="6"></div>
+            <div class="scene-bar" data-scene="7"></div>
+          </div>
+          <div class="scene-labels">
+            <span>İşlem</span>
+            <span>Blok</span>
+            <span>Mining</span>
+            <span>Zorluk</span>
+            <span>Zincir</span>
+            <span>Ödül</span>
+            <span>Enerji</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "pow", 100);
+            window.location.href = "../../../testler/pow/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "pow";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "pow",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "pow" });
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>

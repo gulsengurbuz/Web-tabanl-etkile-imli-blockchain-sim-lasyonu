@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* sadece "genel-testler" dokümanına, sadece sen ekleyebilesin (append-only) */
+    match /catalogTopics/{docId} {
+      allow read: if true;
+
+      allow write: if
+        request.auth != null &&
+        request.auth.uid in ["jpi4UtBz3kXSQnoSjjJtJO6I8Dw1"] &&
+        docId == "genel-testler" &&
+        isValidGenelTestler(resource, request.resource);
+    }
+
+    /* kullanıcı verisi: sadece sahibi */
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+      match /{sub=**} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+    }
+
+    function isValidGenelTestler(res, req) {
+      let allowedKeys = ["title","key","order","required","updatedAt"];
+      let reqKeysOk = req.data.keys().hasOnly(allowedKeys);
+
+      let metaOk =
+        req.data.key == "genel-testler" &&
+        req.data.title == "Genel Testler";
+
+      let reqMapOk =
+        req.data.required is map &&
+        req.data.required.keys().hasOnly(["videos","animations","quizzes"]);
+
+      let appendOk =
+        !res.exists() || (
+          isAppendOnly(res.data.required.videos,     req.data.required.videos) &&
+          isAppendOnly(res.data.required.animations, req.data.required.animations) &&
+          isAppendOnly(res.data.required.quizzes,    req.data.required.quizzes)
+        );
+
+      return reqKeysOk && metaOk && reqMapOk && appendOk;
+    }
+
+    function isAppendOnly(oldList, newList) {
+      let typesOk = newList.size() == 0 || newList[0] is string;
+      let noRemoval = oldList.hasOnly(newList);
+      let noShrink = newList.size() >= oldList.size();
+      return typesOk && noRemoval && noShrink;
+    }
+  }
+}

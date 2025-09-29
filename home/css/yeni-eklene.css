@@ -1,0 +1,111 @@
+.new-part-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 20px;
+  width: 100%;
+}
+.ordering-section {
+  margin-top: 80px;
+  margin-bottom: 90px;
+}
+
+.card-new {
+  max-width: 600px;
+  width: 700px;
+  max-height: 700px;
+  height: 300px;
+  margin-leftt: 40px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #0f67d6 0%, #0b3e88 100%);
+  padding: 1rem;
+}
+
+.card-new .infos {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+
+.card-new .image {
+  height: 12rem;
+  width: 14rem;
+  border-radius: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  background: linear-gradient(
+    to bottom right,
+    rgb(255, 255, 255),
+    rgb(255, 255, 255)
+  );
+}
+
+.card-new .info {
+  height: 7rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-new .name {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.card-new .function {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: rgb(255, 255, 0);
+}
+
+.card-new .stats {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(0, 0, 0, 1);
+}
+.card-new .new-page-text {
+  color: rgb(255, 255, 255);
+  font-size: larger;
+  font-weight: 500;
+}
+
+.card-new .flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 4px;
+}
+
+.card-new .state-value {
+  font-weight: 700;
+  color: rgb(36, 112, 194);
+}
+
+.card-new .request {
+  margin-top: 1.5rem;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card-new .request:hover {
+  background-color: rgb(255, 242, 0);
+  color: #fff;
+}

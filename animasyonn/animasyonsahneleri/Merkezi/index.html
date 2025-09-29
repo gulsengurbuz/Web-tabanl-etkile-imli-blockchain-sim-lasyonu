@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Merkezi Sistem Görselleştirmesi</title>
+    <link rel="stylesheet" href="merkezi.css" />
+    <link rel="stylesheet" href="../../quizbtn.css" />
+  </head>
+  <body>
+    <main class="page">
+      <div class="merkezi-visualization-container">
+        <div class="merkezi-server merkezi-active" id="merkezi-server1">
+          <span class="merkezi-icon">⚙️</span>
+          <span class="merkezi-label">Server1</span>
+        </div>
+
+        <div class="merkezi-device merkezi-active" id="merkezi-phone1">
+          <span class="merkezi-icon">📱</span>
+          <span class="merkezi-label">Telefon</span>
+        </div>
+        <div class="merkezi-device merkezi-active" id="merkezi-laptop1">
+          <span class="merkezi-icon">💻</span>
+          <span class="merkezi-label">Laptop</span>
+        </div>
+        <div class="merkezi-device merkezi-active" id="merkezi-tablet1">
+          <span class="merkezi-icon">📟</span>
+          <span class="merkezi-label">Tablet</span>
+        </div>
+        <div class="merkezi-device merkezi-active" id="merkezi-smartwatch1">
+          <span class="merkezi-icon">⌚</span>
+          <span class="merkezi-label">Akıllı Saat</span>
+        </div>
+        <div class="merkezi-device merkezi-active" id="merkezi-desktop1">
+          <span class="merkezi-icon">🖥️</span>
+          <span class="merkezi-label">Masaüstü</span>
+        </div>
+
+        <div class="merkezi-connection" id="merkezi-conn-phone-server"></div>
+        <div class="merkezi-connection" id="merkezi-conn-laptop-server"></div>
+        <div class="merkezi-connection" id="merkezi-conn-tablet-server"></div>
+        <div
+          class="merkezi-connection"
+          id="merkezi-conn-smartwatch-server"
+        ></div>
+        <div class="merkezi-connection" id="merkezi-conn-desktop-server"></div>
+
+        <div class="merkezi-data-point" id="merkezi-data-point-1"></div>
+        <div class="merkezi-data-point" id="merkezi-data-point-2"></div>
+      </div>
+    </main>
+
+    <div
+      id="merkezi-modal"
+      class="merkezi-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="merkezi-modal-content">
+        <h2 id="merkezi-modal-title"></h2>
+        <p id="merkezi-modal-text"></p>
+        <button id="merkezi-modal-continue-button" type="button">
+          Devam Et
+        </button>
+      </div>
+    </div>
+    <button id="finishAnim">Animasyonu Bitir</button>
+    <script type="module">
+      import { markAnimationProgress } from "../../../shared/progress-client.js";
+
+      document
+        .getElementById("finishAnim")
+        .addEventListener("click", async () => {
+          try {
+            await markAnimationProgress(2, "merkezi", 100);
+
+            window.location.href = "../../../testler/Merkezi/index.html";
+          } catch (e) {
+            alert(e.message || e);
+          }
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="../../../firebase-init.js"></script>
+    <script type="module" src="../../../shared/track-anim.js"></script>
+    <script type="module">
+      import { auth, db } from "../../../firebase-init.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      console.log("trackAnimation var mı? =>", typeof window.trackAnimation);
+
+      console.log("uid =>", auth.currentUser?.uid || "(yok)");
+
+      const slug = "merkezi";
+      try {
+        const c = await getDoc(doc(db, "catalogAnimations", slug));
+        console.log("catalogAnimations/" + slug, "exists:", c.exists());
+      } catch (e) {
+        console.warn("catalog kontrolü hata:", e);
+      }
+
+      window.trackAnimation?.({
+        id: "merkezi",
+
+        minSeconds: 2,
+        minPercent: 0.2,
+      });
+
+      window.__forceWrite = async () => {
+        const uid = auth.currentUser?.uid;
+        if (!uid) {
+          console.warn("Giriş yok");
+          return;
+        }
+        await setDoc(
+          doc(db, "users", uid, "progressAnimations", slug),
+          {
+            id: slug,
+            watchedAt: serverTimestamp(),
+            percent: 1,
+            seconds: 10,
+            sourceUrl: location.pathname,
+          },
+          { merge: true }
+        );
+        console.log("Manuel yazıldı.");
+      };
+    </script>
+
+    <script type="module">
+      window.trackAnimation({ id: "merkezi" });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
+    </script>
+
+    <script src="merkezi.js"></script>
+  </body>
+</html>
